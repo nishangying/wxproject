@@ -8,7 +8,7 @@
 			<view class="content">
 				<view class="leftTemp">
 					<view class="leftItem" @click="switchLeft(i)" :class="{active:leftIndex == i}" v-for="(item,i) in leftArr" :key="i">
-						{{item}}
+						<view class="signIcon"></view>{{item}}
 					</view>
 				</view>
 				<view class="rightTemp">
@@ -89,7 +89,248 @@
 				leftArr:["石泉","宁陕","安康","西安","汉阴","紫阳","其他","其他","其他"],
 				leftIndex:0,
 				rightObj:[
-							
+					{
+						list:[
+							{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},
+						]
+					},{
+						list:[
+							{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},
+						]
+					},{
+						list:[
+							{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},
+						]
+					},{
+						list:[
+							{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},
+						]
+					},{
+						list:[
+							{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},
+						]
+					},{
+						list:[
+							{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},
+						]
+					}
 				],
 				rightArr:[],
 				isShow:false,
@@ -218,6 +459,7 @@
 				}
 				&.active{
 					color: #007aff;
+					
 				}
 			}
 		}
@@ -230,19 +472,29 @@
 			flex-direction: row;
 			overflow:hidden;
 			.leftTemp{
-				width: 15%;
+				width: 18%;
 				height: 100%;
-				border-right:1px solid #d3cdb3;
-				background: #fff;
+				background: #f3f3f3;
 				.leftItem{
 					width: 100%;
-					height: 80rpx;
-					line-height: 80rpx;
+					height: 100rpx;
+					line-height: 100rpx;
 					text-align: left;
-					padding-left: 10rpx;
-					border-bottom:1px solid #d3cdb3;
+					padding-left: 20rpx;
+					font-size: 16px;
 					&.active{
-						color: #007aff;
+						color: #f60f48;
+						background: #fff;
+						position: relative;
+						.signIcon{
+							position: absolute;
+							top: 50%;
+							left: 0;
+							transform: translateY(-50%);
+							width: 5rpx;
+							height: 40rpx;
+							background: #f60f48;
+						}
 					}
 				}
 			}
@@ -290,42 +542,40 @@
 					   font-weight: bold;
 					   color: #000;
 					}
-					.phoneicon{
-						position: absolute;
-					    bottom: 10rpx;
-					    right: 20rpx;
-						width: 80rpx;
-						height: 80rpx;
-						animation: iconAnimation .8s steps(1) infinite;
-						transform-origin: center center;
-						-webkit-transform-origin: center center;
-						-webkit-transition: doubleImgAnimation .8s steps(1) infinite;
-						-o-transition: doubleImgAnimation .8s steps(1) infinite;
-						-moz-transition: doubleImgAnimation .8s steps(1) infinite;
-						transition: doubleImgAnimation .8s steps(1) infinite;
+					.phoneicon{position: absolute;
+					  bottom: 10rpx;
+					  right: 10rpx;
+					  width: 80rpx;
+					  height: 80rpx;
+					  animation: iconAnimation .5s steps(1) infinite;
+					  transform-origin: center center;
+					  -webkit-transform-origin: center center;
+					  -webkit-transition: doubleImgAnimation .5s steps(1) infinite;
+					  -o-transition: doubleImgAnimation .5s steps(1) infinite;
+					  -moz-transition: doubleImgAnimation .5s steps(1) infinite;
+					  transition: doubleImgAnimation .5s steps(1) infinite;
 					}
 					@keyframes iconAnimation{
 					    0%{
-					        transform: rotate(-20deg);
-					        -webkit-transform: rotate(-20deg);
+					        transform: rotate(-10deg);
+					        -webkit-transform: rotate(-10deg);
 					    }
 					    25%{
 					        transform: rotate(0deg);
 					        -webkit-transform: rotate(0deg);
 					    }
 					    50%{
-					        transform: rotate(20deg);
-					        -webkit-transform: rotate(20deg);
+					        transform: rotate(10deg);
+					        -webkit-transform: rotate(10deg);
 					    }
 					    75%{
 					        transform: rotate(0deg);
 					        -webkit-transform: rotate(0deg);
 					    }
 					    100%{
-					        -webkit-transform: rotate(-20deg);
-					        transform: rotate(-20deg);
+					        -webkit-transform: rotate(-10deg);
+					        transform: rotate(-10deg);
 					    }
-					
 					}
 				}
 			}

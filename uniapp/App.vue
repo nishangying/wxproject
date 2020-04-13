@@ -35,7 +35,7 @@
 			var domModule = weex.requireModule('dom');
 			domModule.addRule('fontFace', {
 				'fontFamily': "texticons",
-				'src': "url('./static/text-icon.ttf')"
+				'src': "url('./style/texticon.css')"
 			});
 			// #endif
 		},
@@ -49,6 +49,6 @@
 </script>
 
 <style>
-	@import './common/uni.css';
+	/* @import './common/uni.css'; */
 	/*每个页面公共css */
 </style>

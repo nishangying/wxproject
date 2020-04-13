@@ -10,15 +10,27 @@
 		},
 		// detale
 		{
-			"path": "pages/detail/car",
+			"path": "pages/detail/banner",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/navlist/car",
 			"style": {
 				"navigationBarTitleText": "顺风车"
 			}
 		},
 		{
-			"path": "pages/detail/phone",
+			"path": "pages/navlist/phone",
 			"style": {
 				"navigationBarTitleText": "电话簿"
+			}
+		},
+		{
+			"path": "pages/navlist/lease",
+			"style": {
+				"navigationBarTitleText": "租赁"
 			}
 		}
 		

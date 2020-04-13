@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "顺风车",
+  "usingComponents": {
+    "news-drawer": "/components/drawer"
+  }
+}

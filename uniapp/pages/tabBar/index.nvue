@@ -5,21 +5,21 @@
 				<view class="page-section swiper">
 					<view class="page-section-spacing">
 						<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
-							<swiper-item>
+							<swiper-item @click="gotoDetail(1)">
 								<view class="swiper-item uni-bg-red">
 									<view class="vimg">
 										<image src="../../static/images/true.png" mode=""></image>
 									</view>
 								</view>
 							</swiper-item>
-							<swiper-item>
+							<swiper-item @click="gotoDetail(2)">
 								<view class="swiper-item uni-bg-red">
 									<view class="vimg">
 										<image src="../../static/images/true.png" mode=""></image>
 									</view>
 								</view>
 							</swiper-item>
-							<swiper-item>
+							<swiper-item @click="gotoDetail(3)">
 								<view class="swiper-item uni-bg-red">
 									<view class="vimg">
 										<image src="../../static/images/true.png" mode=""></image>
@@ -67,27 +67,54 @@
 				listArr: [
 					{
 						name:'推荐',
-						path:'/pages/detail/car'
+						path:'/pages/navlist/car'
 					},{
 						name:'顺风车',
-						path:'/pages/detail/car'
+						path:'/pages/navlist/car'
 					},{
 						name:'租赁',
-						path:'/pages/detail/car'
+						path:'/pages/navlist/lease'
 					},{
 						name:'招聘',
-						path:'/pages/detail/car'
+						path:'/pages/navlist/car'
 					},{
 						name:'电话',
-						path:'/pages/detail/phone'
+						path:'/pages/navlist/phone'
 					},
 				],
 			}
 		},
+		mounted() {
+			// uni.showLoading({
+			// 	title: '登录中...'
+			// });
+			// this.wxGetUserInfo();
+		},
 		methods: {
+			wxGetUserInfo() {
+				let _this = this;
+				uni.getUserInfo({
+					provider: 'weixin',
+					success: function(infoRes) {
+						let nickName = infoRes.userInfo.nickName; //昵称
+						let avatarUrl = infoRes.userInfo.avatarUrl; //头像
+						try {
+							uni.setStorageSync('isCanUse', false);//记录是否第一次授权  false:表示不是第一次授权
+							_this.updateUserInfo();
+						} catch (e) {}
+					},
+					fail(res) {}
+				});
+			},
 			navigateTo(path){
 				uni.navigateTo({
 					url: path
+				});
+			},
+			gotoDetail(i){
+				let url =
+				uni.navigateTo({
+					url: `/pages/detail/banner?index=${i}`
 				});
 			}
 			
@@ -123,7 +150,7 @@
 			flex-wrap: wrap;
 			background: #fff;
 			.navItem{
-				width: 25%;
+				width: 20%;
 				.item{
 					width: 110rpx;
 					height: 110rpx;

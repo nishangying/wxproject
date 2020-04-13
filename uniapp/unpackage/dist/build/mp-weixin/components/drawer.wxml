@@ -1,0 +1,1 @@
+<view class="drawerPage"><view hidden="{{!(isShow)}}" class="drawer_screen"></view><view class="{{['drawer_attr_box',(!isShow)?'isShowBefore':'',(isShow)?'isShowAfter':'']}}"><view class="drawer_attr_content"><slot></slot></view></view></view>

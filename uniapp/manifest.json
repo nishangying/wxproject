@@ -1,6 +1,6 @@
 {
     "name" : "demo",
-    "appid" : "",
+    "appid" : "__UNI__8C95FD5",
     "description" : "基于uni-app开发的新闻/资讯类App模板",
     "versionName" : "2.4.3",
     "versionCode" : 112,
@@ -41,9 +41,10 @@
     },
     "quickapp" : {},
     "mp-weixin" : {
-        "appid" : "wx54f04f7988a48a2c",
+        "appid" : "wxe4062f7f6bf9203d",
         "setting" : {
-            "urlCheck" : false
+            "urlCheck" : false,
+            "minified" : true
         },
         "usingComponents" : true
     },

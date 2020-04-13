@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/tabBar/index",
+    "pages/tabBar/release",
+    "pages/detail/banner",
+    "pages/navlist/car",
+    "pages/navlist/phone",
+    "pages/navlist/lease"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "百事通",
+    "navigationBarBackgroundColor": "#2F85FC",
+    "backgroundColor": "#FFFFFF"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#007AFF",
+    "borderStyle": "black",
+    "backgroundColor": "#F8F8F8",
+    "list": [
+      {
+        "pagePath": "pages/tabBar/index",
+        "iconPath": "static/tabBar/template.png",
+        "selectedIconPath": "static/tabBar/templateHL.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/tabBar/release",
+        "iconPath": "static/tabBar/extui.png",
+        "selectedIconPath": "static/tabBar/extuiHL.png",
+        "text": "发布"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

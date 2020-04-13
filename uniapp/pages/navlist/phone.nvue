@@ -4,7 +4,7 @@
 			<view class="content">
 				<view class="leftTemp">
 					<view class="leftItem" @click="switchLeft(i)" :class="{active:leftIndex == i}" v-for="(item,i) in leftArr" :key="i">
-						{{item}}
+						<view class="signIcon"></view>{{item}}
 					</view>
 				</view>
 				<view class="rightTemp">
@@ -278,19 +278,29 @@
 			flex-direction: row;
 			overflow:hidden;
 			.leftTemp{
-				width: 15%;
+				width: 18%;
 				height: 100%;
-				border-right:1px solid #d3cdb3;
-				background: #fff;
+				background: #f3f3f3;
 				.leftItem{
 					width: 100%;
-					height: 80rpx;
-					line-height: 80rpx;
+					height: 100rpx;
+					line-height: 100rpx;
 					text-align: left;
-					padding-left: 10rpx;
-					border-bottom:1px solid #d3cdb3;
+					padding-left: 20rpx;
+					font-size: 16px;
 					&.active{
-						color: #007aff;
+						color: #f60f48;
+						background: #fff;
+						position: relative;
+						.signIcon{
+							position: absolute;
+							top: 50%;
+							left: 0;
+							transform: translateY(-50%);
+							width: 5rpx;
+							height: 40rpx;
+							background: #f60f48;
+						}
 					}
 				}
 			}
@@ -327,39 +337,38 @@
 					}
 					.phoneicon{position: absolute;
 					  bottom: 10rpx;
-					  right: 20rpx;
+					  right: 10rpx;
 					  width: 80rpx;
 					  height: 80rpx;
-					  animation: iconAnimation .8s steps(1) infinite;
+					  animation: iconAnimation .5s steps(1) infinite;
 					  transform-origin: center center;
 					  -webkit-transform-origin: center center;
-					  -webkit-transition: doubleImgAnimation .8s steps(1) infinite;
-					  -o-transition: doubleImgAnimation .8s steps(1) infinite;
-					  -moz-transition: doubleImgAnimation .8s steps(1) infinite;
-					  transition: doubleImgAnimation .8s steps(1) infinite;
+					  -webkit-transition: doubleImgAnimation .5s steps(1) infinite;
+					  -o-transition: doubleImgAnimation .5s steps(1) infinite;
+					  -moz-transition: doubleImgAnimation .5s steps(1) infinite;
+					  transition: doubleImgAnimation .5s steps(1) infinite;
 					}
 					@keyframes iconAnimation{
 					    0%{
-					        transform: rotate(-20deg);
-					        -webkit-transform: rotate(-20deg);
+					        transform: rotate(-10deg);
+					        -webkit-transform: rotate(-10deg);
 					    }
 					    25%{
 					        transform: rotate(0deg);
 					        -webkit-transform: rotate(0deg);
 					    }
 					    50%{
-					        transform: rotate(20deg);
-					        -webkit-transform: rotate(20deg);
+					        transform: rotate(10deg);
+					        -webkit-transform: rotate(10deg);
 					    }
 					    75%{
 					        transform: rotate(0deg);
 					        -webkit-transform: rotate(0deg);
 					    }
 					    100%{
-					        -webkit-transform: rotate(-20deg);
-					        transform: rotate(-20deg);
+					        -webkit-transform: rotate(-10deg);
+					        transform: rotate(-10deg);
 					    }
-					
 					}
 				}
 			}

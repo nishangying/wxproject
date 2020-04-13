@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "电话簿",
+  "usingComponents": {
+    "news-drawer": "/components/drawer"
+  }
+}

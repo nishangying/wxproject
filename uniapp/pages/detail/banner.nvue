@@ -1,0 +1,80 @@
+<template>
+	<view class="carPage">
+		<image @click="onPhone(item.phone)" class="phoneicon" src="../../static/images/phoneicon.png"></image>
+		活动宣传广告
+		
+	</view>
+</template>
+
+<script>
+	
+	
+	export default {
+		components: {
+		},
+		data() {
+			return {
+				index:0,
+			}
+		},
+		onLoad(params) {
+			console.log(params)
+			this.index = params.index;
+		},
+		methods: {
+			
+			
+			
+		},
+	}
+</script>
+
+
+<style lang="scss" scoped>
+	.carPage{
+		width: 100%;
+		background: #f3f3f3;
+		position: relative;
+		.phoneicon{
+			position: fixed;
+		    bottom: 10rpx;
+		    right: 20rpx;
+			width: 80rpx;
+			height: 80rpx;
+			animation: iconAnimation .8s steps(1) infinite;
+			transform-origin: center center;
+			-webkit-transform-origin: center center;
+			-webkit-transition: doubleImgAnimation .8s steps(1) infinite;
+			-o-transition: doubleImgAnimation .8s steps(1) infinite;
+			-moz-transition: doubleImgAnimation .8s steps(1) infinite;
+			transition: doubleImgAnimation .8s steps(1) infinite;
+		}
+		@keyframes iconAnimation{
+		    0%{
+		        transform: rotate(-20deg);
+		        -webkit-transform: rotate(-20deg);
+		    }
+		    25%{
+		        transform: rotate(0deg);
+		        -webkit-transform: rotate(0deg);
+		    }
+		    50%{
+		        transform: rotate(20deg);
+		        -webkit-transform: rotate(20deg);
+		    }
+		    75%{
+		        transform: rotate(0deg);
+		        -webkit-transform: rotate(0deg);
+		    }
+		    100%{
+		        -webkit-transform: rotate(-20deg);
+		        transform: rotate(-20deg);
+		    }
+		
+		}
+	}
+	
+	
+	
+	
+</style>

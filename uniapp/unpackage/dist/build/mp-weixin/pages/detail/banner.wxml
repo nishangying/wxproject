@@ -1,0 +1,1 @@
+<view class="carPage data-v-4039a598"><image class="phoneicon data-v-4039a598" src="../../static/images/phoneicon.png" data-event-opts="{{[['tap',[['onPhone',['$0'],['item.phone']]]]]}}" bindtap="__e"></image>活动宣传广告</view>
