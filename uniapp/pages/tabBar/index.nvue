@@ -1,0 +1,149 @@
+<template>
+	<view class="indexPage">
+		<view class="swiperBox">
+			<view class="uni-padding-wrap">
+				<view class="page-section swiper">
+					<view class="page-section-spacing">
+						<swiper class="swiper" :indicator-dots="indicatorDots" :autoplay="autoplay" :interval="interval" :duration="duration">
+							<swiper-item>
+								<view class="swiper-item uni-bg-red">
+									<view class="vimg">
+										<image src="../../static/images/true.png" mode=""></image>
+									</view>
+								</view>
+							</swiper-item>
+							<swiper-item>
+								<view class="swiper-item uni-bg-red">
+									<view class="vimg">
+										<image src="../../static/images/true.png" mode=""></image>
+									</view>
+								</view>
+							</swiper-item>
+							<swiper-item>
+								<view class="swiper-item uni-bg-red">
+									<view class="vimg">
+										<image src="../../static/images/true.png" mode=""></image>
+									</view>
+								</view>
+							</swiper-item>
+							
+						</swiper>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="nav">
+			<view class="navItem" @click='navigateTo(item.path)' v-for="(item,index) in listArr" :key="index">
+				<view class="item">{{item.name}}</view>
+			</view>
+		</view>
+		
+	</view>
+</template>
+
+<script>
+	// #ifdef APP-PLUS
+	const dom = weex.requireModule('dom');
+	// #endif
+
+	// import newsPage from './news-page.nvue';
+
+	// 缓存每页最多
+	const MAX_CACHE_DATA = 100;
+	// 缓存页签数量
+	const MAX_CACHE_PAGE = 3;
+	const TAB_PRELOAD_OFFSET = 1;
+
+	export default {
+		components: {
+		},
+		data() {
+			return {
+				background: ['color1', 'color2', 'color3'],
+				indicatorDots: true,
+				autoplay: true,
+				interval: 2000,
+				duration: 500,
+				listArr: [
+					{
+						name:'推荐',
+						path:'/pages/detail/car'
+					},{
+						name:'顺风车',
+						path:'/pages/detail/car'
+					},{
+						name:'租赁',
+						path:'/pages/detail/car'
+					},{
+						name:'招聘',
+						path:'/pages/detail/car'
+					},{
+						name:'电话',
+						path:'/pages/detail/phone'
+					},
+				],
+			}
+		},
+		methods: {
+			navigateTo(path){
+				uni.navigateTo({
+					url: path
+				});
+			}
+			
+		}
+	}
+</script>
+
+<style lang="scss">
+	.indexPage {
+ 		width: 100%;
+		box-sizing:border-box;
+		background: #f3f3f3;
+		padding-bottom: 200rpx;
+		.swiperBox{
+			background: #fff;
+			padding: 2%;
+			box-sizing:border-box;
+			.vimg{
+				width: 100%;
+				image{
+					width: 100%;
+				}
+			}
+		}
+		
+		.nav{
+			width: 100%;
+			padding: 20rpx;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+			background: #fff;
+			.navItem{
+				width: 25%;
+				.item{
+					width: 110rpx;
+					height: 110rpx;
+					border-radius: 50%;
+					font-size: 15px;
+					background:linear-gradient(to right,#61ffe6,#1fc7b0); 
+					color: #fff;
+					text-align: center;
+					line-height: 106rpx;
+					border: 1px solid #629eba;
+					padding: 2rpx;
+					box-sizing: border-box;
+					margin:15rpx auto;
+				}
+			}
+		}
+ 	}
+		
+	
+	
+	
+</style>
+

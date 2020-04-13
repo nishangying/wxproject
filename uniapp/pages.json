@@ -1,0 +1,53 @@
+{
+	"pages": [
+		{
+			"path": "pages/tabBar/index",
+			"style": {}
+		},
+		{
+			"path": "pages/tabBar/release",
+			"style": {}
+		},
+		// detale
+		{
+			"path": "pages/detail/car",
+			"style": {
+				"navigationBarTitleText": "顺风车"
+			}
+		},
+		{
+			"path": "pages/detail/phone",
+			"style": {
+				"navigationBarTitleText": "电话簿"
+			}
+		}
+		
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "百事通",
+		"navigationBarBackgroundColor": "#2F85FC",
+		"backgroundColor": "#FFFFFF"
+	},
+	"tabBar": {
+			"color": "#7A7E83",
+			"selectedColor": "#007AFF",
+			"borderStyle": "black",
+			"backgroundColor": "#F8F8F8",
+			"list": [
+				{
+					"pagePath": "pages/tabBar/index",
+					"iconPath": "static/tabBar/template.png",
+					"selectedIconPath": "static/tabBar/templateHL.png",
+					"text": "首页"
+				},
+				{
+					"pagePath": "pages/tabBar/release",
+					"iconPath": "static/tabBar/extui.png",
+					"selectedIconPath": "static/tabBar/extuiHL.png",
+					"text": "发布"
+				}
+				
+			]
+		}
+}

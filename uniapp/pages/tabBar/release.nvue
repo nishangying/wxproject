@@ -1,0 +1,63 @@
+<template>
+	<view class="releasePage">
+		releasePage
+	</view>
+</template>
+
+<script>
+	// #ifdef APP-PLUS
+	const dom = weex.requireModule('dom');
+	// #endif
+
+	// import newsPage from './news-page.nvue';
+
+	// 缓存每页最多
+	const MAX_CACHE_DATA = 100;
+	// 缓存页签数量
+	const MAX_CACHE_PAGE = 3;
+	const TAB_PRELOAD_OFFSET = 1;
+
+	export default {
+		components: {
+		},
+		data() {
+			return {
+				background: ['color1', 'color2', 'color3'],
+				indicatorDots: true,
+				autoplay: true,
+				interval: 2000,
+				duration: 500,
+				listArr: ['推荐', '顺风车', '租赁','招聘','电话'],
+			}
+		},
+		methods: {
+			changeIndicatorDots(e) {
+				this.indicatorDots = !this.indicatorDots
+			},
+			changeAutoplay(e) {
+				this.autoplay = !this.autoplay
+			},
+			intervalChange(e) {
+				this.interval = e.target.value
+			},
+			durationChange(e) {
+				this.duration = e.target.value
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+	.releasePage {
+ 		width: 100%;
+		box-sizing:border-box;
+		background: #f3f3f3;
+		padding-bottom: 200rpx;
+		
+ 	}
+		
+	
+	
+	
+</style>
+

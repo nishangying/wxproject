@@ -1,0 +1,129 @@
+<template>
+	<view class="indexPage">
+		<view class="nav">
+			<view class="navItem">111</view>
+			<view class="navItem">111</view>
+			<view class="navItem">111</view>
+			<view class="navItem">111</view>
+			<view class="navItem">111</view>
+		</view>
+	</view>
+</template>
+
+<script>
+	// #ifdef APP-PLUS
+	const dom = weex.requireModule('dom');
+	// #endif
+
+	import newsPage from './news-page.nvue';
+
+	// 缓存每页最多
+	const MAX_CACHE_DATA = 100;
+	// 缓存页签数量
+	const MAX_CACHE_PAGE = 3;
+	const TAB_PRELOAD_OFFSET = 1;
+
+	export default {
+		components: {
+			newsPage
+		},
+		data() {
+			return {
+				navArr: ['推荐', '顺风车', '租赁','招聘','电话'],
+			}
+		},
+		onReady() {
+			
+		},
+		methods: {
+			
+			
+		}
+	}
+</script>
+
+<style>
+	page {
+ 		width: 100%;
+ 		min-height: 100%;
+ 	}
+		
+	.indexPage{
+		width: 100%;
+	}
+	.swiperBox{
+		width: 100%;
+		height: 300rpx;
+		font-size: 15px;
+		background: red;
+	}
+	.nav{
+		width: 100%;
+		padding: 20rpx;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.navItem{
+		width: 180rpx;
+	}
+	.item{
+		width: 110rpx;
+		height: 110rpx;
+		border-radius: 50%;
+		font-size: 15px;
+		background:linear-gradient(to right,#ffe55c,#ffbe19); 
+		text-align: center;
+		line-height: 106rpx;
+		border: 1px solid #629eba;
+		padding: 2rpx;
+		box-sizing: border-box;
+		margin:0 auto;
+	}
+	
+	
+	
+</style>
+
+// <style lang="scss">
+// 	page {
+// 		width: 100%;
+// 		min-height: 100%;
+// 	}
+// 	.indexPage{
+// 		width: 100%;
+// 		.swiperBox{
+// 			width: 100%;
+// 			height: 300rpx;
+// 			font-size: 15px;
+// 			background: red;
+// 		}
+// 		.nav{
+// 			width: 100%;
+// 			padding: 20rpx;
+// 			/* #ifndef APP-PLUS-NVUE */
+// 			display: flex;
+// 			/* #endif */
+// 			justify-content: space-between;
+// 			.navItem{
+// 				width: 180rpx;
+// 				.item{
+// 					width: 110rpx;
+// 					height: 110rpx;
+// 					border-radius: 50%;
+// 					font-size: 15px;
+// 					background:linear-gradient(to right,#ffe55c,#ffbe19); 
+// 					text-align: center;
+// 					line-height: 106rpx;
+// 					border: 1px solid #629eba;
+// 					padding: 2rpx;
+// 					box-sizing: border-box;
+// 					margin:0 auto;
+// 				}
+// 			}
+// 		}
+// 	}
+
+	
+// </style>

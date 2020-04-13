@@ -1,0 +1,367 @@
+<template>
+	<view class="carPage">
+		<view>
+			<view class="content">
+				<view class="leftTemp">
+					<view class="leftItem" @click="switchLeft(i)" :class="{active:leftIndex == i}" v-for="(item,i) in leftArr" :key="i">
+						{{item}}
+					</view>
+				</view>
+				<view class="rightTemp">
+					<scroll-view  scroll-y="true" refresher-enabled="true" :refresher-triggered="triggered"
+						:refresher-threshold="100" refresher-background="lightgreen" @refresherpulling="onPulling"
+						@refresherrefresh="onRefresh" @refresherrestore="onRestore" @refresherabort="onAbort">
+						<view class="rightItem" v-for="(item,i) in rightArr" :key='i' v-show='rightArr.length > 0'>
+							<text class="name">地址：{{item.name}}</text>
+							<text class="phone">联系人：{{item.fPhone}}</text>
+							<image @click="onPhone(item.phone)" class="phoneicon" src="../../static/images/phoneicon.png"></image>
+						</view>
+						<view v-show='rightArr.length == 0' class="noData">暂无数据</view>
+					</scroll-view>
+				</view>
+			</view>
+		</view>
+		
+	</view>
+</template>
+
+<script>
+	import newsDrawer from '../../components/drawer.nvue';
+	// import newsDrawert from '../../components/drawert.nvue';
+	
+	
+	export default {
+		components: {
+			newsDrawer
+		},
+		data() {
+			return {
+				triggered: false,
+				footerindex:1,
+				headerindex:1,
+				leftArr:["政务","快递","饮品","水电煤","跑腿","吃饭","装修","其他","其他"],
+				leftIndex:0,
+				rightObj:[
+					{
+					phoneArr:[
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 
+					]
+				  },{
+					phoneArr:[
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 
+					]
+				  },{
+					phoneArr:[
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 
+						 
+					]
+				  },{
+					phoneArr:[
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 
+						 
+					]
+				  },{
+					phoneArr:[
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 
+						 
+					]
+				  },{
+					phoneArr:[
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						
+						 
+					]
+				  },{
+					phoneArr:[
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						
+						 
+					]
+				  },{
+					phoneArr:[
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 
+					]
+				  },{
+					phoneArr:[
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 
+					]
+				  },{
+					phoneArr:[
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 
+					]
+				  },{
+					phoneArr:[
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 {name:'张三1',phone:'13928371654',fPhone:'139****1654'},
+						 
+					]
+				  },
+				],
+				rightArr:[],
+				isShow:false,
+			}
+		},
+		onLoad() {
+			this.rightArr = this.rightObj[0].phoneArr; 
+			this._freshing = false;
+			setTimeout(() => {
+				this.triggered = true;
+			}, 100)
+			console.log(999999999)
+		},
+		methods: {
+			// switchLeft
+			switchLeft(i){
+				this.leftIndex = i;
+				if(i < this.rightObj.length){
+					this.rightArr = this.rightObj[i].phoneArr || []; 
+				}else{
+					this.rightArr = []; 
+				}
+			},
+			// switchheader
+			switchheader(i){
+				this.headerindex = i;
+			},
+			// switchFooter
+			switchFooter(i){
+				this.footerindex = i;
+				if(i == 2){
+					this.isShow = true;
+				}else{
+					this.animationData = '',
+					this.isShow = false;
+				}
+			},
+			// @closeDrawer
+			closeDrawer(){
+				this.isShow = false;	
+			},
+			// onPhone
+			onPhone(phone){
+				uni.makePhoneCall({
+				    phoneNumber:phone
+				});
+			},
+			// flexBtn
+			flexBtn(i){
+					
+				if(i==1){
+					this.animationData = '',
+					this.isShow = false;
+				}else{
+					console.log(this.startValue);
+					console.log(this.endValue);
+					console.log(this.priceValue);
+					console.log(this.phoneValue);
+					console.log(this.dateValue);
+					console.log(this.itembtnIndex);
+				}
+			},
+			onPulling(e) {
+				console.log("onpulling", e);
+			},
+			onRefresh() {
+				if (this._freshing) return;
+				this._freshing = true;
+				setTimeout(() => {
+					this.triggered = false;
+					this._freshing = false;
+				}, 1000)
+			},
+			onRestore() {
+				this.triggered = 'restore'; // 需要重置
+				console.log("onRestore");
+			},
+			onAbort() {
+				console.log("onAbort");
+			}
+		},
+	}
+</script>
+
+
+<style lang="scss" scoped>
+	.carPage{
+		width: 100%;
+		background: #f3f3f3;
+		.title{
+			width: 100%;
+			text-align: center;
+			font-size: 16px;
+			border-bottom:1px solid  #d3cdb3;
+			background: #fff;
+		}
+		.header{
+			height: 80rpx;
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-direction: row;
+			background: #fff;
+			border-bottom:1px solid  #d3cdb3;
+			.headerItem{
+				flex: 1;
+				display: inline-block;
+				text-align: center;
+				width: 50%;
+				&:nth-child(1){
+					border-right:1px solid  #d3cdb3;
+				}
+				&.active{
+					color: #007aff;
+				}
+			}
+		}
+		.content{
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			flex-direction: row;
+			overflow:hidden;
+			.leftTemp{
+				width: 15%;
+				height: 92vh;
+				border-right:1px solid #d3cdb3;
+				background: #fff;
+				.leftItem{
+					width: 100%;
+					height: 80rpx;
+					line-height: 80rpx;
+					text-align: left;
+					padding-left: 10rpx;
+					border-bottom:1px solid #d3cdb3;
+					&.active{
+						color: #007aff;
+					}
+				}
+			}
+			.rightTemp{
+				width: 82%;
+				padding: 10rpx;
+				overflow:scroll;
+				height: 92vh;
+				background: #fff;
+				.noData{
+					text-align: center;
+					width: 100%;
+					line-height: 400rpx;
+				}
+				.rightItem{
+					width: 100%;
+					border-bottom: 1px solid #589abc;
+					overflow: hidden;
+					padding: 20rpx 40rpx;
+					box-sizing: border-box;
+					margin-bottom: 30rpx;
+					position: relative;
+					.name{
+					   display: block;
+					   font-size: 12px;
+					   font-weight: bold;
+					   color: #000;
+					}
+					.phone{
+					   font-size: 12px;
+					   font-weight: bold;
+					   color: #000;
+					}
+					.phoneicon{position: absolute;
+					  bottom: 10rpx;
+					  right: 20rpx;
+					  width: 80rpx;
+					  height: 80rpx;
+					  animation: iconAnimation .8s steps(1) infinite;
+					  transform-origin: center center;
+					  -webkit-transform-origin: center center;
+					  -webkit-transition: doubleImgAnimation .8s steps(1) infinite;
+					  -o-transition: doubleImgAnimation .8s steps(1) infinite;
+					  -moz-transition: doubleImgAnimation .8s steps(1) infinite;
+					  transition: doubleImgAnimation .8s steps(1) infinite;
+					}
+					@keyframes iconAnimation{
+					    0%{
+					        transform: rotate(-20deg);
+					        -webkit-transform: rotate(-20deg);
+					    }
+					    25%{
+					        transform: rotate(0deg);
+					        -webkit-transform: rotate(0deg);
+					    }
+					    50%{
+					        transform: rotate(20deg);
+					        -webkit-transform: rotate(20deg);
+					    }
+					    75%{
+					        transform: rotate(0deg);
+					        -webkit-transform: rotate(0deg);
+					    }
+					    100%{
+					        -webkit-transform: rotate(-20deg);
+					        transform: rotate(-20deg);
+					    }
+					
+					}
+				}
+			}
+		}
+		
+	}
+	
+	
+	
+	
+</style>
