@@ -34,7 +34,33 @@
 		</view>
 		<view class="nav">
 			<view class="navItem" @click='navigateTo(item.path)' v-for="(item,index) in listArr" :key="index">
-				<view class="item">{{item.name}}</view>
+				<view class="item">
+					<image class="itemIcon" :src="item.url" mode=""></image>
+				</view>
+				<text class="itemName">{{item.name}}</text>
+			</view>
+		</view>
+		<view class="advert">
+			<text class="title">将要发车</text>
+			<view class="advertTemp">
+				<view class="advertItem" v-for="(item) in 4">
+					<view class="first">
+						<text>石泉</text>到
+						<text>西安</text>
+					</view>
+					<text class="time">
+						距离发车：19分30秒
+					</text>
+				</view>
+			</view>
+		</view>
+		
+		<view class="advert">
+			<text class="title">好评优先</text>
+			<view class="advertTemp">
+				<view class="advertItem" v-for="(item) in 4">
+					
+				</view>
 			</view>
 		</view>
 		
@@ -67,18 +93,23 @@
 				listArr: [
 					{
 						name:'推荐',
-						path:'/pages/navlist/car'
+						url:'../../static/icon/shops.png',
+						path:'/pages/navlist/shops'
 					},{
-						name:'顺风车',
+						name:'拼车',
+						url:'../../static/icon/car.png',
 						path:'/pages/navlist/car'
 					},{
 						name:'租赁',
+						url:'../../static/icon/Lease.png',
 						path:'/pages/navlist/lease'
 					},{
 						name:'招聘',
-						path:'/pages/navlist/car'
+						url:'../../static/icon/recruit.png',
+						path:'/pages/navlist/recruit'
 					},{
 						name:'电话',
+						url:'../../static/icon/telephone.png',
 						path:'/pages/navlist/phone'
 					},
 				],
@@ -125,9 +156,9 @@
 <style lang="scss">
 	.indexPage {
  		width: 100%;
+		min-height: 100vh;
 		box-sizing:border-box;
 		background: #f3f3f3;
-		padding-bottom: 200rpx;
 		.swiperBox{
 			background: #fff;
 			padding: 2%;
@@ -142,7 +173,7 @@
 		
 		.nav{
 			width: 100%;
-			padding: 20rpx;
+			padding: 5rpx 20rpx 15rpx;
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
@@ -151,19 +182,69 @@
 			background: #fff;
 			.navItem{
 				width: 20%;
+				flex-direction: column;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 				.item{
-					width: 110rpx;
-					height: 110rpx;
+					width: 100rpx;
+					height: 100rpx;
 					border-radius: 50%;
-					font-size: 15px;
-					background:linear-gradient(to right,#61ffe6,#1fc7b0); 
-					color: #fff;
-					text-align: center;
-					line-height: 106rpx;
-					border: 1px solid #629eba;
+					border: 1px solid $uni-color-error;
 					padding: 2rpx;
 					box-sizing: border-box;
-					margin:15rpx auto;
+					margin:15rpx auto 0;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					.itemIcon{
+						width: 70rpx;
+						height: 70rpx;
+					}
+				}
+				.itemName{
+					font-size: 14px;
+					color: #e0620d ;
+				}
+			}
+			
+		}
+		.advert{
+			width: 100%;
+			margin-top: 20rpx;
+			background-color: #fff;
+			padding: 15rpx;
+			.title{
+				font-size: 16px;
+				font-weight: bold;
+				color: #e0620d;
+			}
+			.advertTemp{
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-wrap: wrap;
+				flex-direction: row;
+				.advertItem{
+					width: 48.2%;
+					height: 110rpx;
+					border:1px solid #bcb8c9;
+					border-radius: 15rpx;
+					padding: 10rpx 15rpx;
+					margin-top: 20rpx;
+					.first{
+						width: 100%;
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						flex-direction: row;
+						font-size: 14px;
+					}
+					.time{
+						margin-top: 10rpx;
+						font-size: 14px;
+					}
 				}
 			}
 		}

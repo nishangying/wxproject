@@ -1,0 +1,648 @@
+<template>
+	<view class="carPage">
+		<view>
+			<view class="header">
+				<view @click="switchheader(1)" class="headerItem" :class="{active:headerindex == 1}">人找企业</view>
+				<view @click="switchheader(2)" class="headerItem" :class="{active:headerindex == 2}">企业招人</view>
+			</view>
+			<view class="content">
+				<view class="leftTemp">
+					<view class="leftItem" @click="switchLeft(i)" :class="{active:leftIndex == i}" v-for="(item,i) in leftArr" :key="i">
+						<view class="signIcon"></view>{{item}}
+					</view>
+				</view>
+				<view class="rightTemp">
+					<!-- <scroll-view  scroll-y="true" refresher-enabled="true" :refresher-triggered="triggered"
+						:refresher-threshold="100" refresher-background="lightgreen" @refresherpulling="onPulling"
+						@refresherrefresh="onRefresh" @refresherrestore="onRestore" @refresherabort="onAbort"> -->
+					<scroll-view  scroll-y="true">
+						<view class="rightItem" v-for="(item,i) in rightArr" :key='i' v-show='!isnoData'>
+							<view class="top">
+								  <text>{{item.start}}</text>
+								  <image class="arrow" src="../../static/images/arrow.png"></image>
+								  <text>{{item.end}}</text>
+							</view>
+							<text class="date">价格：{{item.price}}</text>
+							<text class="date">时间：{{item.date}}{{item.time}}</text>
+							<text class="phone">联系人：{{item.fPhone}}</text>
+							<image @click="onPhone(item.phone)" class="phoneicon" src="../../static/icon/phone.png"></image>
+						</view>
+						<view v-show='isnoData' class="noData">暂无数据</view>
+					</scroll-view>
+				</view>
+			</view>
+		</view>
+		<view class="footer">
+			 <!-- <view @click="switchFooter(1)" class="footerItem" :class="{active:footerindex == 1}">我有搭车</view> -->
+			 <view @click="switchFooter(2)" class="footerItem" :class="{active:footerindex == 2}">我要发布</view>
+		</view>
+		
+		<newsDrawer :isShow='isShow' @closeDrawer='closeDrawer' animation="animationData">
+			<view class="formBox">
+				<view class="flexTemp">
+					<text class="temptitle">出发:</text><input v-model="startValue" class="ipt" placeholder='请输入出发地点'/>
+				</view>
+				<view class="flexTemp">
+					<text class="temptitle">到达:</text><input  v-model="endValue" class="ipt" placeholder='请输入到达点'/>
+				</view>
+				
+				<view class="flexTemp">
+					<text class="temptitle">价格:</text><input  v-model="priceValue" type="date" class="ipt" placeholder='默认面议'/>
+				</view>
+				<view class="flexTemp">
+					<text class="temptitle">出发时间:</text><input v-model="dateValue" type="number" class="ipt" placeholder='年月日'/>
+				</view>
+				<view class="flexTemp">
+					<text class="temptitle">联系方式:</text><input  v-model="phoneValue" type="number" class="ipt" placeholder='请输入手机号'/>
+				</view>
+				<view class="flexTemp">
+					<text @click="itembtnIndex=1" class="itembtn" :class="{active:itembtnIndex==1}">找工作</text>
+					<text @click="itembtnIndex=2" class="itembtn" :class="{active:itembtnIndex==2}">企业招聘</text>
+				</view>
+				<view class="flexBtn">
+					<text @click="flexBtn(1)">取消</text>
+					<text @click="flexBtn(2)">发布</text>
+				</view>
+				
+			</view>
+		</newsDrawer>
+		<!-- <newsDrawert :visible="true" :mode='left'>
+			
+		</newsDrawert> -->
+	</view>
+</template>
+
+<script>
+	import newsDrawer from '../../components/drawer.nvue';
+	// import newsDrawert from '../../components/drawert.nvue';
+	
+	
+	export default {
+		components: {
+			newsDrawer
+		},
+		data() {
+			return {
+				triggered: false,
+				footerindex:2,
+				headerindex:1,
+				leftArr:["县城","外地",],
+				leftIndex:0,
+				rightObj:[
+					{
+						list:[
+							{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},
+						]
+					},{
+						list:[
+							{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},{
+								start:"石泉",
+								end:"西安",
+								time:"15:30",
+								date:'2020年04月20日',
+								name:'张三',
+								price:"面议",
+								fPhone:"135****6655",
+								phone:"13556566655",
+							},
+						]
+					}
+				],
+				rightArr:[],
+				isShow:false,
+				animationData:'',
+				isnoData:false,
+				// form
+				itembtnIndex:1,
+				startValue:'',
+				endValue:'',
+				priceValue:'',
+				dateValue:'',
+				phoneValue:'',
+				typeValue:1,
+			}
+		},
+		onLoad() {
+			this.rightArr = this.rightObj[0].list; 
+			this._freshing = false;
+			setTimeout(() => {
+				this.triggered = true;
+			}, 1000)
+		},
+		methods: {
+			// switchLeft
+			switchLeft(i){
+				this.leftIndex = i;
+				if(i < this.rightObj.length){
+					this.rightArr = this.rightObj[i].list || []; 
+					this.isnoData = false;
+				}else{
+					this.rightArr = []; 
+					this.isnoData = true;
+				}
+			},
+			// switchheader
+			switchheader(i){
+				this.headerindex = i;
+			},
+			// switchFooter
+			switchFooter(i){
+				this.footerindex = i;
+				if(i == 2){
+					this.isShow = true;
+				}else{
+					this.animationData = '',
+					this.isShow = false;
+				}
+			},
+			// @closeDrawer
+			closeDrawer(){
+				this.isShow = false;	
+			},
+			// onPhone
+			onPhone(phone){
+				uni.makePhoneCall({
+				    phoneNumber:phone
+				});
+			},
+			// flexBtn
+			flexBtn(i){
+				if(i==1){
+					this.animationData = '',
+					this.isShow = false;
+				}else{
+					console.log(this.startValue);
+				}
+			},
+			// onPageScroll
+			onPageScroll:function(Object) {  
+			    conole.log(Object.scrollTop);//实时获取到滚动的值  
+			},
+			onPulling(e) {
+				console.log("onpulling", e);
+			},
+			onRefresh() {
+				if (this._freshing) return;
+				this._freshing = true;
+				setTimeout(() => {
+					this.triggered = false;
+					this._freshing = false;
+				}, 1000)
+			},
+			onRestore() {
+				this.triggered = 'restore'; // 需要重置
+				console.log("onRestore");
+			},
+			onAbort() {
+				console.log("onAbort");
+			}
+		},
+	}
+</script>
+
+
+<style lang="scss" scoped>
+	.carPage{
+		width: 100%;
+		background: #f3f3f3;
+		.title{
+			width: 100%;
+			text-align: center;
+			font-size: 16px;
+			border-bottom:1px solid  #d3cdb3;
+			background: #fff;
+		}
+		.header{
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index:20;
+			height: 80rpx;
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-direction: row;
+			background: #fff;
+			border-bottom:1px solid  #d3cdb3;
+			.headerItem{
+				flex: 1;
+				display: inline-block;
+				text-align: center;
+				width: 50%;
+				&:nth-child(1){
+					border-right:1px solid  #d3cdb3;
+				}
+				&.active{
+					color: #e0620d;
+					
+				}
+			}
+		}
+		.content{
+			width: 100%;
+			height: 100vh;
+			padding: 80rpx 0;
+			display: flex;
+			justify-content: space-between;
+			flex-direction: row;
+			overflow:hidden;
+			.leftTemp{
+				width: 18%;
+				height: 100%;
+				background: #f3f3f3;
+				.leftItem{
+					width: 100%;
+					height: 100rpx;
+					line-height: 100rpx;
+					text-align: left;
+					padding-left: 20rpx;
+					font-size: 16px;
+					&.active{
+						color: #e0620d;
+						background: #fff;
+						position: relative;
+						.signIcon{
+							position: absolute;
+							top: 50%;
+							left: 0;
+							transform: translateY(-50%);
+							width: 5rpx;
+							height: 40rpx;
+							background: #e0620d;
+						}
+					}
+				}
+			}
+			.rightTemp{
+				width: 82%;
+				padding: 10rpx;
+				overflow:scroll;
+				height: 100%;
+				padding-bottom: 100rpx;
+				background: #fff;
+				.noData{
+					text-align: center;
+					width: 100%;
+					line-height: 400rpx;
+				}
+				.rightItem{
+					width: 100%;
+					border-bottom: 1px solid #589abc;
+					overflow: hidden;
+					padding: 20rpx 40rpx 10rpx;
+					box-sizing: border-box;
+					position: relative;
+					.top{
+						margin:15rpx 0 ;
+						display: flex;
+						justify-content: space-between;
+						flex-direction: row;
+						text{
+						   font-size: 14px;
+						   font-weight: bold;
+						}
+					}
+					.arrow{
+					   width: 247rpx;
+					   height: 22rpx;
+					}
+					.date{
+					   display: block;
+					   font-size: 12px;
+					   font-weight: bold;
+					   color: #000;
+					}
+					.phone{
+					   font-size: 12px;
+					   font-weight: bold;
+					   color: #000;
+					}
+					.phoneicon{position: absolute;
+					  bottom: 10rpx;
+					  right: 10rpx;
+					  width: 80rpx;
+					  height: 80rpx;
+					  animation: iconAnimation .5s steps(1) infinite;
+					  transform-origin: center center;
+					  -webkit-transform-origin: center center;
+					  -webkit-transition: doubleImgAnimation .5s steps(1) infinite;
+					  -o-transition: doubleImgAnimation .5s steps(1) infinite;
+					  -moz-transition: doubleImgAnimation .5s steps(1) infinite;
+					  transition: doubleImgAnimation .5s steps(1) infinite;
+					}
+					@keyframes iconAnimation{
+					    0%{
+					        transform: rotate(-10deg);
+					        -webkit-transform: rotate(-10deg);
+					    }
+					    25%{
+					        transform: rotate(0deg);
+					        -webkit-transform: rotate(0deg);
+					    }
+					    50%{
+					        transform: rotate(10deg);
+					        -webkit-transform: rotate(10deg);
+					    }
+					    75%{
+					        transform: rotate(0deg);
+					        -webkit-transform: rotate(0deg);
+					    }
+					    100%{
+					        -webkit-transform: rotate(-10deg);
+					        transform: rotate(-10deg);
+					    }
+					}
+				}
+			}
+		}
+		// .content{
+		// 	width: 100%;
+		// 	height:1110rpx;
+		// 	display: flex;
+		// 	justify-content: space-between;
+		// 	flex-direction: row;
+		// 	overflow:hidden;
+		// 	.leftTemp{
+		// 		width: 15%;
+		// 		border-right:1px solid #d3cdb3;
+		// 		background: #fff;
+		// 		.leftItem{
+		// 			width: 100%;
+		// 			height: 80rpx;
+		// 			line-height: 80rpx;
+		// 			text-align: left;
+		// 			padding-left: 10rpx;
+		// 			border-bottom:1px solid #d3cdb3;
+		// 			&.active{
+		// 				color: #007aff;
+		// 			}
+		// 		}
+		// 	}
+		// 	.rightTemp{
+		// 		width: 82%;
+		// 		padding: 10rpx;
+		// 		overflow:scroll;
+		// 		background: #fff;
+		// 		.noData{
+		// 			text-align: center;
+		// 			width: 100%;
+		// 			line-height: 400rpx;
+		// 		}
+		// 		.rightItem{
+		// 			width: 100%;
+		// 			border-bottom: 1px solid #589abc;
+		// 			overflow: hidden;
+		// 			padding: 20rpx 40rpx;
+		// 			box-sizing: border-box;
+		// 			margin-bottom: 30rpx;
+		// 			position: relative;
+		// 			.top{
+		// 				margin:15rpx 0 ;
+		// 				display: flex;
+		// 				justify-content: space-between;
+		// 				flex-direction: row;
+		// 				text{
+		// 				   font-size: 14px;
+		// 				   font-weight: bold;
+		// 				}
+		// 			}
+		// 			.arrow{
+		// 			   width: 247rpx;
+		// 			   height: 22rpx;
+		// 			}
+		// 			.date{
+		// 			   display: block;
+		// 			   font-size: 12px;
+		// 			   font-weight: bold;
+		// 			   color: #000;
+		// 			}
+		// 			.phone{
+		// 			   font-size: 12px;
+		// 			   font-weight: bold;
+		// 			   color: #000;
+		// 			}
+		// 			.phoneicon{position: absolute;
+		// 			  bottom: 10rpx;
+		// 			  right: 20rpx;
+		// 			  width: 80rpx;
+		// 			  height: 80rpx;
+		// 			  animation: iconAnimation .8s steps(1) infinite;
+		// 			  transform-origin: center center;
+		// 			  -webkit-transform-origin: center center;
+		// 			  -webkit-transition: doubleImgAnimation .8s steps(1) infinite;
+		// 			  -o-transition: doubleImgAnimation .8s steps(1) infinite;
+		// 			  -moz-transition: doubleImgAnimation .8s steps(1) infinite;
+		// 			  transition: doubleImgAnimation .8s steps(1) infinite;
+		// 			}
+		// 			@keyframes iconAnimation{
+		// 			    0%{
+		// 			        transform: rotate(-20deg);
+		// 			        -webkit-transform: rotate(-20deg);
+		// 			    }
+		// 			    25%{
+		// 			        transform: rotate(0deg);
+		// 			        -webkit-transform: rotate(0deg);
+		// 			    }
+		// 			    50%{
+		// 			        transform: rotate(20deg);
+		// 			        -webkit-transform: rotate(20deg);
+		// 			    }
+		// 			    75%{
+		// 			        transform: rotate(0deg);
+		// 			        -webkit-transform: rotate(0deg);
+		// 			    }
+		// 			    100%{
+		// 			        -webkit-transform: rotate(-20deg);
+		// 			        transform: rotate(-20deg);
+		// 			    }
+					
+		// 			}
+					
+		// 		}
+		// 	}
+		// }
+		.footer{
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			z-index:20;
+			height: 80rpx;
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-direction: row;
+			background: #fff;
+			border-top:1px solid  #d3cdb3;
+			.footerItem{
+				flex: 1;
+				display: inline-block;
+				text-align: center;
+				width: 50%;
+				font-size: 16px;
+				&:nth-child(1){
+					// border-right:1px solid  #d3cdb3;
+				}
+				&.active{
+					color: #e0620d;
+				}
+			}
+		}
+		.formBox{
+			width: 100%;
+			.flexTemp{
+				width: 100%;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				flex-direction: row;
+				font-size: 14px;
+				.ipt{
+					width: 500rpx;
+					height: 60rpx;
+					font-size: 14px;
+					margin-left: 10rpx;
+					
+				}
+				.temptitle{
+					width: 150rpx;
+					white-space: nowrap;
+					text-align: left;
+				}
+				.itembtn{
+					color: #000;
+					margin-right: 20rpx;
+					text-align: center;
+					line-height: 60rpx;
+				}
+				.active{
+					color: #41c9c2;
+				}
+			}
+			.flexBtn{
+				margin-top: 60rpx;
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-direction: row;
+				padding: 0 15%;
+				text{
+					width: 120rpx;
+					height: 60rpx;
+					border-radius: 10rpx;
+					background: #41c9c2;
+					color: #fff;
+					margin-right: 20rpx;
+					text-align: center;
+					line-height: 60rpx;
+				}
+			}
+		}
+	}
+	
+	
+	
+	
+</style>

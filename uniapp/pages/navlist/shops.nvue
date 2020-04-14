@@ -1,0 +1,578 @@
+<template>
+	<view class="carPage">
+		<view>
+			<view class="content">
+				<view class="leftTemp">
+					<view class="leftItem" @click="switchLeft(i)" :class="{active:leftIndex == i}" v-for="(item,i) in leftArr" :key="i">
+						<view class="signIcon"></view>{{item}}
+					</view>
+				</view>
+				<view class="rightTemp">
+					<!-- <scroll-view  scroll-y="true" refresher-enabled="true" :refresher-triggered="triggered"
+						:refresher-threshold="100" refresher-background="lightgreen" @refresherpulling="onPulling"
+						@refresherrefresh="onRefresh" @refresherrestore="onRestore" @refresherabort="onAbort"> -->
+					<scroll-view  scroll-y="true">
+						<view class="rightItem" v-for="(item,i) in rightArr" :key='i' v-show='!isnoData'>
+							<view class="rightContent">
+								<view class="item">
+									<image class="headImg" src="../../static/01.jpg" mode=""></image>
+								</view>
+								<view class="item">
+									<text class="name">地址：{{item.address}}</text>
+									<text class="name">价格：{{item.price}}</text>
+									<text class="name">联系人：{{item.name}}</text>
+									<text class="phone">联系电话：{{item.fPhone}}</text>
+								</view>
+							</view>
+							<view class="browse">
+								浏览人数：80
+							</view>
+							<!-- <image @click="onPhone(item.phone)" class="phoneicon" src="../../static/images/phoneicon.png"></image> -->
+						</view>
+						<view v-show='isnoData' class="noData">暂无数据</view>
+					</scroll-view>
+				</view>
+			</view>
+			<view class="footer">
+				 <!-- <view @click="switchFooter(1)" class="footerItem" :class="{active:footerindex == 1}">我有搭车</view> -->
+				 <view @click="switchFooter(2)" class="footerItem" :class="{active:footerindex == 2}">我要发布</view>
+			</view>
+		</view>
+		<newsDrawer :isShow='isShow' @closeDrawer='closeDrawer' animation="animationData">
+			<view class="formBox">
+				<view class="flexTemp">
+					<text class="temptitle">出发:</text><input v-model="startValue" class="ipt" placeholder='请输入出发地点'/>
+				</view>
+				<view class="flexTemp">
+					<text class="temptitle">到达:</text><input  v-model="endValue" class="ipt" placeholder='请输入到达点'/>
+				</view>
+				
+				<view class="flexTemp">
+					<text class="temptitle">价格:</text><input  v-model="priceValue" class="ipt" placeholder='面议'/>
+				</view>
+				<view class="flexTemp">
+					<text class="temptitle">出发时间:</text><input v-model="dateValue" type="number" class="ipt" placeholder='年月日'/>
+				</view>
+				<view class="flexTemp">
+					<text class="temptitle">联系方式:</text><input  v-model="phoneValue" type="number" class="ipt" placeholder='请输入手机号'/>
+				</view>
+				<view class="flexTemp">
+					<text v-for="(item,i) in leftArr" :key='i' @click="checked(i)" class="itembtn" :class="{active:itembtnIndex==i}">{{item}}</text>
+				</view>
+				<view class="flexBtn">
+					<text @click="flexBtn(1)">取消</text>
+					<text @click="flexBtn(2)">发布</text>
+				</view>
+				
+			</view>
+		</newsDrawer>
+	</view>
+</template>
+
+<script>
+	import newsDrawer from '../../components/drawer.nvue';
+	// import newsDrawert from '../../components/drawert.nvue';
+	
+	
+	export default {
+		components: {
+			newsDrawer
+		},
+		data() {
+			return {
+				triggered: false,
+				footerindex:2,
+				headerindex:1,
+				leftArr:["旅游","服饰","食品","住宿"],
+				leftIndex:0,
+				rightObj:[
+					{
+						phoneArr:[
+							{
+								name:'张三1',
+								address:'文化路11号',
+								price:'面议',
+								phone:'13928371654',
+								fPhone:'139****1654',
+							},{
+								name:'张三1',
+								address:'文化路11号',
+								price:'面议',
+								phone:'13928371654',
+								fPhone:'139****1654',
+							},{
+								name:'张三1',
+								address:'文化路11号',
+								price:'面议',
+								phone:'13928371654',
+								fPhone:'139****1654',
+							},
+						],
+					},{
+						phoneArr:[
+							{
+								name:'张三1',
+								address:'文化路11号',
+								price:'面议',
+								phone:'13928371654',
+								fPhone:'139****1654',
+							},{
+								name:'张三1',
+								address:'文化路11号',
+								price:'面议',
+								phone:'13928371654',
+								fPhone:'139****1654',
+							},{
+								name:'张三1',
+								address:'文化路11号',
+								price:'面议',
+								phone:'13928371654',
+								fPhone:'139****1654',
+							},{
+								name:'张三1',
+								address:'文化路11号',
+								price:'面议',
+								phone:'13928371654',
+								fPhone:'139****1654',
+							},{
+								name:'张三1',
+								address:'文化路11号',
+								price:'面议',
+								phone:'13928371654',
+								fPhone:'139****1654',
+							},
+						],
+					},{
+						phoneArr:[
+							{
+								name:'张三1',
+								address:'文化路11号',
+								price:'面议',
+								phone:'13928371654',
+								fPhone:'139****1654',
+							},{
+								name:'张三1',
+								address:'文化路11号',
+								price:'面议',
+								phone:'13928371654',
+								fPhone:'139****1654',
+							},
+						],
+					},{
+						phoneArr:[
+							{
+								name:'张三1',
+								address:'文化路11号',
+								price:'面议',
+								phone:'13928371654',
+								fPhone:'139****1654',
+							},{
+								name:'张三1',
+								address:'文化路11号',
+								price:'面议',
+								phone:'13928371654',
+								fPhone:'139****1654',
+							},{
+								name:'张三1',
+								address:'文化路11号',
+								price:'面议',
+								phone:'13928371654',
+								fPhone:'139****1654',
+							},{
+								name:'张三1',
+								address:'文化路11号',
+								price:'面议',
+								phone:'13928371654',
+								fPhone:'139****1654',
+							},
+						],
+					},{
+						phoneArr:[
+							{
+								name:'张三1',
+								address:'文化路11号',
+								price:'面议',
+								phone:'13928371654',
+								fPhone:'139****1654',
+							},{
+								name:'张三1',
+								address:'文化路11号',
+								price:'面议',
+								phone:'13928371654',
+								fPhone:'139****1654',
+							},{
+								name:'张三1',
+								address:'文化路11号',
+								price:'面议',
+								phone:'13928371654',
+								fPhone:'139****1654',
+							},{
+								name:'张三1',
+								address:'文化路11号',
+								price:'面议',
+								phone:'13928371654',
+								fPhone:'139****1654',
+							},
+						],
+						
+					},
+				],
+				rightArr:[],
+				isShow:false,
+				isnoData:false,
+				// form
+				itembtnIndex:0,
+				startValue:'',
+				endValue:'',
+				priceValue:'',
+				dateValue:'',
+				phoneValue:'',
+				typeValue:1,
+			}
+		},
+		onLoad() {
+			this.rightArr = this.rightObj[0].phoneArr; 
+			this._freshing = false;
+			setTimeout(() => {
+				this.triggered = true;
+			}, 1000)
+		},
+		methods: {
+			// switchLeft
+			switchLeft(i){
+				console.log(i)
+				this.leftIndex = i;
+				if(i < this.rightObj.length){
+					this.rightArr = this.rightObj[i].phoneArr || []; 
+					this.isnoData = false;
+				}else{
+					this.rightArr = []; 
+					this.isnoData = true;
+				}
+			},
+			// switchheader
+			switchheader(i){
+				this.headerindex = i;
+			},
+			// switchFooter
+			switchFooter(i){
+				this.footerindex = i;
+				if(i == 2){
+					this.isShow = true;
+				}else{
+					this.animationData = '',
+					this.isShow = false;
+				}
+			},
+			// @closeDrawer
+			closeDrawer(){
+				this.isShow = false;	
+			},
+			// onPhone
+			onPhone(phone){
+				uni.makePhoneCall({
+				    phoneNumber:phone
+				});
+			},
+			// flexBtn
+			flexBtn(i){
+					
+				if(i==1){
+					this.animationData = '',
+					this.isShow = false;
+				}else{
+					console.log(this.startValue);
+					console.log(this.endValue);
+					console.log(this.priceValue);
+					console.log(this.phoneValue);
+					console.log(this.dateValue);
+					console.log(this.itembtnIndex);
+				}
+			},
+			// checked、
+			checked(i){
+				this.itembtnIndex = i;
+			},
+			onPulling(e) {
+				console.log("onpulling", e);
+			},
+			onRefresh() {
+				if (this._freshing) return;
+				this._freshing = true;
+				setTimeout(() => {
+					this.triggered = false;
+					this._freshing = false;
+				}, 1000)
+			},
+			onRestore() {
+				this.triggered = 'restore'; // 需要重置
+				console.log("onRestore");
+			},
+			onAbort() {
+				console.log("onAbort");
+			}
+		},
+	}
+</script>
+
+
+<style lang="scss" scoped>
+	.carPage{
+		width: 100%;
+		background: #f3f3f3;
+		.title{
+			width: 100%;
+			text-align: center;
+			font-size: 16px;
+			border-bottom:1px solid  #d3cdb3;
+			background: #fff;
+		}
+		.header{
+			height: 80rpx;
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-direction: row;
+			background: #fff;
+			border-bottom:1px solid  #d3cdb3;
+			.headerItem{
+				flex: 1;
+				display: inline-block;
+				text-align: center;
+				width: 50%;
+				&:nth-child(1){
+					border-right:1px solid  #d3cdb3;
+				}
+				&.active{
+					color: #007aff;
+				}
+			}
+		}
+		.content{
+			width: 100%;
+			height: 100vh;
+			padding-bottom: 80rpx;
+			display: flex;
+			justify-content: space-between;
+			flex-direction: row;
+			overflow:hidden;
+			.leftTemp{
+				width: 18%;
+				height: 100%;
+				background: #f3f3f3;
+				.leftItem{
+					width: 100%;
+					height: 100rpx;
+					line-height: 100rpx;
+					text-align: left;
+					padding-left: 20rpx;
+					font-size: 16px;
+					&.active{
+						color: #e0620d;
+						background: #fff;
+						position: relative;
+						.signIcon{
+							position: absolute;
+							top: 50%;
+							left: 0;
+							transform: translateY(-50%);
+							width: 5rpx;
+							height: 40rpx;
+							background: #e0620d;
+						}
+					}
+				}
+			}
+			.rightTemp{
+				width: 82%;
+				padding: 10rpx;
+				overflow:scroll;
+				height: 100%;
+				background: #fff;
+				.noData{
+					text-align: center;
+					width: 100%;
+					line-height: 400rpx;
+				}
+				.rightItem{
+					width: 100%;
+					border-bottom: 1px solid #589abc;
+					overflow: hidden;
+					padding: 20rpx 10rpx 10rpx 10rpx;
+					box-sizing: border-box;
+					position: relative;
+					.rightContent{
+						display: flex;
+						flex-direction: row;
+						justify-content: flex-start;
+						align-items: center;
+						.item{
+							&:first-child{
+								margin-right: 10rpx;
+								width: 30%;
+							}
+							&:nth-child(2){
+								margin-right: 10rpx;
+								width: 70%;
+							}
+							.headImg{
+								width: 150rpx;
+								height: 150rpx;
+								border-radius: 5px;
+							}
+							.name{
+								width: 100%;
+								display: block;
+								font-size: 12px;
+								font-weight: bold;
+								color: #000;
+								white-space: nowrap;
+								overflow: hidden;
+								text-overflow: ellipsis;
+								margin-bottom: 10rpx;
+							}
+							.phone{
+							   font-size: 12px;
+							   font-weight: bold;
+							   color: #000;
+							}
+						}
+					}
+					.browse{
+						width: 100%;
+						text-align: left;
+						font-size: 12px;
+					}
+						
+					
+					.phoneicon{position: absolute;
+					  bottom: 10rpx;
+					  right: 10rpx;
+					  width: 80rpx;
+					  height: 80rpx;
+					  animation: iconAnimation .5s steps(1) infinite;
+					  transform-origin: center center;
+					  -webkit-transform-origin: center center;
+					  -webkit-transition: doubleImgAnimation .5s steps(1) infinite;
+					  -o-transition: doubleImgAnimation .5s steps(1) infinite;
+					  -moz-transition: doubleImgAnimation .5s steps(1) infinite;
+					  transition: doubleImgAnimation .5s steps(1) infinite;
+					}
+					@keyframes iconAnimation{
+					    0%{
+					        transform: rotate(-10deg);
+					        -webkit-transform: rotate(-10deg);
+					    }
+					    25%{
+					        transform: rotate(0deg);
+					        -webkit-transform: rotate(0deg);
+					    }
+					    50%{
+					        transform: rotate(10deg);
+					        -webkit-transform: rotate(10deg);
+					    }
+					    75%{
+					        transform: rotate(0deg);
+					        -webkit-transform: rotate(0deg);
+					    }
+					    100%{
+					        -webkit-transform: rotate(-10deg);
+					        transform: rotate(-10deg);
+					    }
+					
+					}
+				}
+			}
+		}
+		.footer{
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			z-index:20;
+			height: 80rpx;
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-direction: row;
+			background: #fff;
+			border-top:1px solid  #d3cdb3;
+			.footerItem{
+				flex: 1;
+				display: inline-block;
+				text-align: center;
+				width: 50%;
+				font-size: 16px;
+				&:nth-child(1){
+					// border-right:1px solid  #d3cdb3;
+				}
+				&.active{
+					color: #e0620d;
+				}
+			}
+		}
+		.formBox{
+			width: 100%;
+			.flexTemp{
+				width: 100%;
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				flex-direction: row;
+				font-size: 14px;
+				.ipt{
+					width: 500rpx;
+					height: 60rpx;
+					font-size: 14px;
+					margin-left: 10rpx;
+					
+				}
+				.temptitle{
+					width: 150rpx;
+					white-space: nowrap;
+					text-align: left;
+				}
+				.itembtn{
+					width: 100rpx;
+					height: 60rpx;
+					border-radius: 10rpx;
+					background: #f3f3f3;
+					color: #000;
+					margin-right: 20rpx;
+					text-align: center;
+					line-height: 60rpx;
+				}
+				.active{
+					background: #41c9c2;
+					color: #fff;
+				}
+			}
+			.flexBtn{
+				margin-top: 60rpx;
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-direction: row;
+				padding: 0 15%;
+				font-size: 16px;
+				text{
+					width: 120rpx;
+					height: 60rpx;
+					border-radius: 10rpx;
+					background: #41c9c2;
+					color: #fff;
+					margin-right: 20rpx;
+					text-align: center;
+					line-height: 60rpx;
+				}
+			}
+		}
+	
+	}
+	
+	
+	
+	
+</style>

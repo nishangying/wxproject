@@ -15,7 +15,7 @@
 						<view class="rightItem" v-for="(item,i) in rightArr" :key='i' v-show='!isnoData'>
 							<text class="name">地址：{{item.name}}</text>
 							<text class="phone">联系人：{{item.fPhone}}</text>
-							<image @click="onPhone(item.phone)" class="phoneicon" src="../../static/images/phoneicon.png"></image>
+							<image @click="onPhone(item.phone)" class="phoneicon" src="../../static/icon/phone.png"></image>
 						</view>
 						<view v-show='isnoData' class="noData">暂无数据</view>
 					</scroll-view>
@@ -289,7 +289,7 @@
 					padding-left: 20rpx;
 					font-size: 16px;
 					&.active{
-						color: #f60f48;
+						color: #e0620d;
 						background: #fff;
 						position: relative;
 						.signIcon{
@@ -299,7 +299,7 @@
 							transform: translateY(-50%);
 							width: 5rpx;
 							height: 40rpx;
-							background: #f60f48;
+							background: #e0620d;
 						}
 					}
 				}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "招聘",
+  "usingComponents": {
+    "news-drawer": "/components/drawer"
+  }
+}

@@ -3,7 +3,7 @@
 		<view class="drawer_screen" v-show="isShow"></view>
 		<view class="drawer_attr_box" :class="{isShowBefore:!isShow,isShowAfter:isShow}">
 			<!-- <view class="close_icon"  @click.stop="setModalStatus">×</view> -->
-			<view class="drawer_attr_content">
+			<view class="drawer_attr_content" :style="{height:getH}">
 			    <slot />
 					
 			    </view>
@@ -17,10 +17,19 @@
 		props: {
 		    isShow: {
 		        type: Boolean,
-		    }
+		    },
+			nHeight: {
+			    type: Number,
+				default: 520
+			}
 		},
 		data(){
 			return{
+			}
+		},
+		computed:{
+			getH(){
+				return this.nHeight+'rpx';
 			}
 		},
 		methods:{
@@ -79,8 +88,6 @@
 			}
 			.drawer_attr_content {
 			    padding: 20rpx;
-				min-height: 520rpx;
-				max-height: 800rpx;
 				overflow-y: scroll;
 				padding: 15rpx;
 				.drawer_image {

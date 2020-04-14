@@ -38,29 +38,27 @@
 				 <view @click="switchFooter(2)" class="footerItem" :class="{active:footerindex == 2}">我要发布</view>
 			</view>
 		</view>
-		<newsDrawer :isShow='isShow' @closeDrawer='closeDrawer' animation="animationData">
+		<newsDrawer :isShow='isShow' :nHeight='600' @closeDrawer='closeDrawer' animation="animationData">
 			<view class="formBox">
 				<view class="flexTemp">
-					<text class="temptitle">出发:</text><input v-model="startValue" class="ipt" placeholder='请输入出发地点'/>
+					<text class="temptitle">地址:</text><input v-model="startValue" class="ipt" placeholder='请输入地址'/>
 				</view>
 				<view class="flexTemp">
-					<text class="temptitle">到达:</text><input  v-model="endValue" class="ipt" placeholder='请输入到达点'/>
-				</view>
-				
-				<view class="flexTemp">
-					<text class="temptitle">价格:</text><input  v-model="priceValue" class="ipt" placeholder='面议'/>
+					<text class="temptitle">联系人:</text><input  v-model="endValue" class="ipt" placeholder='请输入姓名'/>
 				</view>
 				<view class="flexTemp">
-					<text class="temptitle">出发时间:</text><input v-model="dateValue" type="number" class="ipt" placeholder='年月日'/>
+					<text class="temptitle">价格:</text><input  v-model="priceValue" class="ipt" placeholder='默认面议'/>
 				</view>
 				<view class="flexTemp">
-					<text class="temptitle">联系方式:</text><input  v-model="phoneValue" type="number" class="ipt" placeholder='请输入手机号'/>
+					<text class="temptitle">联系电话:</text><input  v-model="phoneValue" type="number" class="ipt" placeholder='请输入手机号'/>
+				</view>
+				<view class="uploadTemp">
+					<view class="upload"></view>
+					<view class="upload"></view>
+					<view class="upload"></view>
 				</view>
 				<view class="flexTemp">
-					<text @click="itembtnIndex=1" class="itembtn" :class="{active:itembtnIndex==1}">出租</text>
-					<text @click="itembtnIndex=2" class="itembtn" :class="{active:itembtnIndex==2}">租房</text>
-					<text @click="itembtnIndex=3" class="itembtn" :class="{active:itembtnIndex==3}">出售</text>
-					<text @click="itembtnIndex=4" class="itembtn" :class="{active:itembtnIndex==4}">购房</text>
+					<text v-for="(item,i) in leftArr" :key='i' @click="checked(i)" class="itembtn" :class="{active:itembtnIndex==i}">{{item}}</text>
 				</view>
 				<view class="flexBtn">
 					<text @click="flexBtn(1)">取消</text>
@@ -224,7 +222,7 @@
 				isShow:false,
 				isnoData:false,
 				// form
-				itembtnIndex:1,
+				itembtnIndex:0,
 				startValue:'',
 				endValue:'',
 				priceValue:'',
@@ -291,6 +289,10 @@
 					console.log(this.dateValue);
 					console.log(this.itembtnIndex);
 				}
+			},
+			// checked、
+			checked(i){
+				this.itembtnIndex = i;
 			},
 			onPulling(e) {
 				console.log("onpulling", e);
@@ -368,7 +370,7 @@
 					padding-left: 20rpx;
 					font-size: 16px;
 					&.active{
-						color: #f60f48;
+						color: #e0620d;
 						background: #fff;
 						position: relative;
 						.signIcon{
@@ -378,7 +380,7 @@
 							transform: translateY(-50%);
 							width: 5rpx;
 							height: 40rpx;
-							background: #f60f48;
+							background: #e0620d;
 						}
 					}
 				}
@@ -429,6 +431,7 @@
 								white-space: nowrap;
 								overflow: hidden;
 								text-overflow: ellipsis;
+								margin-bottom: 10rpx;
 							}
 							.phone{
 							   font-size: 12px;
@@ -501,11 +504,12 @@
 				display: inline-block;
 				text-align: center;
 				width: 50%;
+				font-size: 16px;
 				&:nth-child(1){
 					// border-right:1px solid  #d3cdb3;
 				}
 				&.active{
-					color: #007aff;
+					color: #e0620d;
 				}
 			}
 		}
@@ -517,6 +521,7 @@
 				justify-content: flex-start;
 				align-items: center;
 				flex-direction: row;
+				font-size: 14px;
 				.ipt{
 					width: 500rpx;
 					height: 60rpx;
@@ -525,22 +530,34 @@
 					
 				}
 				.temptitle{
-					width: 120rpx;
+					width: 150rpx;
 					white-space: nowrap;
-					text-align: right;
+					text-align: left;
 				}
 				.itembtn{
 					width: 100rpx;
 					height: 60rpx;
 					border-radius: 10rpx;
-					background: #ababab;
-					color: #fff;
+					background: #f3f3f3;
+					color: #000;
 					margin-right: 20rpx;
 					text-align: center;
 					line-height: 60rpx;
 				}
 				.active{
 					background: #41c9c2;
+					color: #fff;
+				}
+			}
+			.uploadTemp{
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-direction: row;
+				.upload{
+					width: 100rpx;
+					height: 100rpx;
+					border: 1px solid #000;
 				}
 			}
 			.flexBtn{
@@ -551,6 +568,7 @@
 				align-items: center;
 				flex-direction: row;
 				padding: 0 15%;
+				font-size: 16px;
 				text{
 					width: 120rpx;
 					height: 60rpx;

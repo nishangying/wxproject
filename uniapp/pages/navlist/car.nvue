@@ -23,9 +23,10 @@
 								  <text>{{item.end}}</text>
 							</view>
 							<text class="date">价格：{{item.price}}</text>
-							<text class="date">时间：{{item.date}}{{item.time}}</text>
-							<text class="phone">联系人：{{item.fPhone}}</text>
-							<image @click="onPhone(item.phone)" class="phoneicon" src="../../static/images/phoneicon.png"></image>
+							<text class="date">联系人：{{item.fPhone}}</text>
+							<text class="date">发车时间：{{item.date}}{{item.time}}</text>
+							<text class="phone">已沟通：51</text>
+							<image @click="onPhone(item.phone)" class="phoneicon" src="../../static/icon/phone.png"></image>
 						</view>
 						<view v-show='isnoData' class="noData">暂无数据</view>
 					</scroll-view>
@@ -37,7 +38,7 @@
 			 <view @click="switchFooter(2)" class="footerItem" :class="{active:footerindex == 2}">我要发布</view>
 		</view>
 		
-		<newsDrawer :isShow='isShow' @closeDrawer='closeDrawer' animation="animationData">
+		<newsDrawer :isShow='isShow' :nHeight='520' @closeDrawer='closeDrawer' animation="animationData">
 			<view class="formBox">
 				<view class="flexTemp">
 					<text class="temptitle">出发:</text><input v-model="startValue" class="ipt" placeholder='请输入出发地点'/>
@@ -47,14 +48,15 @@
 				</view>
 				
 				<view class="flexTemp">
-					<text class="temptitle">价格:</text><input  v-model="priceValue" class="ipt" placeholder='面议'/>
+					<text class="temptitle">价格:</text><input  v-model="priceValue" type="date" class="ipt" placeholder='默认面议'/>
 				</view>
 				<view class="flexTemp">
 					<text class="temptitle">出发时间:</text><input v-model="dateValue" type="number" class="ipt" placeholder='年月日'/>
 				</view>
 				<view class="flexTemp">
-					<text class="temptitle">联系方式:</text><input  v-model="phoneValue" type="number" class="ipt" placeholder='请输入手机号'/>
+					<text class="temptitle">联系电话:</text><input  v-model="phoneValue" type="number" class="ipt" placeholder='请输入手机号'/>
 				</view>
+				
 				<view class="flexTemp">
 					<text @click="itembtnIndex=1" class="itembtn" :class="{active:itembtnIndex==1}">人找车</text>
 					<text @click="itembtnIndex=2" class="itembtn" :class="{active:itembtnIndex==2}">车找人</text>
@@ -86,7 +88,7 @@
 				triggered: false,
 				footerindex:2,
 				headerindex:1,
-				leftArr:["石泉","宁陕","安康","西安","汉阴","紫阳","其他","其他","其他"],
+				leftArr:["全部","石泉","宁陕","安康","西安","汉阴","紫阳","其他","其他","其他"],
 				leftIndex:0,
 				rightObj:[
 					{
@@ -458,7 +460,7 @@
 					border-right:1px solid  #d3cdb3;
 				}
 				&.active{
-					color: #007aff;
+					color: #e0620d;
 					
 				}
 			}
@@ -483,7 +485,7 @@
 					padding-left: 20rpx;
 					font-size: 16px;
 					&.active{
-						color: #f60f48;
+						color: #e0620d;
 						background: #fff;
 						position: relative;
 						.signIcon{
@@ -493,7 +495,7 @@
 							transform: translateY(-50%);
 							width: 5rpx;
 							height: 40rpx;
-							background: #f60f48;
+							background: #e0620d;
 						}
 					}
 				}
@@ -540,7 +542,7 @@
 					.phone{
 					   font-size: 12px;
 					   font-weight: bold;
-					   color: #000;
+					   color: #e0620d;
 					}
 					.phoneicon{position: absolute;
 					  bottom: 10rpx;
@@ -704,11 +706,12 @@
 				display: inline-block;
 				text-align: center;
 				width: 50%;
+				font-size: 16px;
 				&:nth-child(1){
 					// border-right:1px solid  #d3cdb3;
 				}
 				&.active{
-					color: #007aff;
+					color: #e0620d;
 				}
 			}
 		}
@@ -720,6 +723,7 @@
 				justify-content: flex-start;
 				align-items: center;
 				flex-direction: row;
+				font-size: 14px;
 				.ipt{
 					width: 500rpx;
 					height: 60rpx;
@@ -728,24 +732,21 @@
 					
 				}
 				.temptitle{
-					width: 120rpx;
+					width: 150rpx;
 					white-space: nowrap;
-					text-align: right;
+					text-align: left;
 				}
 				.itembtn{
-					width: 100rpx;
-					height: 60rpx;
-					border-radius: 10rpx;
-					background: #ababab;
-					color: #fff;
+					color: #000;
 					margin-right: 20rpx;
 					text-align: center;
 					line-height: 60rpx;
 				}
 				.active{
-					background: #41c9c2;
+					color: #41c9c2;
 				}
 			}
+			
 			.flexBtn{
 				margin-top: 60rpx;
 				width: 100%;
