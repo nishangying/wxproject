@@ -1,0 +1,23 @@
+<view class="phonePage">
+    <view class="header"></view>
+    <view class="content">
+      <view class="leftTemp">
+        <view class="leftItem {{leftIndex == index?'active':''}}" bindtap="switchLeft" data-id="{{index}}" wx:for="{{leftArr}}" wx:key='index'>
+          <view class="signIcon"></view>
+          {{item}}
+        </view>
+      </view>
+      <view class="rightTemp">
+        <view class="rightItem" wx:for="{{rightArr}}" wx:key='index' wx:if="{{!isNoData}}">
+          <text class="name">姓名：{{item.name}}</text>
+          <text class="name">联系电话：{{item.fPhone}}</text>
+          <image bindtap="onPhone" data-id="{{index}}" class="phoneicon" src="../../../images/icon/phone.png"></image>
+        </view>
+        <view class="noData" wx:if="{{isNoData}}">暂无数据</view>
+
+      </view>
+    </view>
+    <view class="footer"></view>
+</view>
+   
+

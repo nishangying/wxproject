@@ -1,0 +1,113 @@
+.phonePage{
+  width: 100%;
+}
+.phonePage .content{
+    width: 100%;
+    height: 100vh;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    justify-items: center;
+}
+.phonePage .content .leftTemp{
+  width: 18%;
+  background: #f3f3f3;
+}
+.phonePage .content .leftTemp .leftItem{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: left;
+  padding-left: 20rpx;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+.phonePage .content .leftTemp .active{
+  color: #e0620d;
+  background: #fff;
+  position: relative;
+}
+.phonePage .content .leftTemp .active .signIcon{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 5rpx;
+  height: 40rpx;
+  background: #e0620d;
+}
+
+.phonePage .content .rightTemp{
+  width: 80%;
+  height: 100vh;
+  overflow: scroll;
+}
+.phonePage .content .rightTemp .rightItem{
+  width: 100%;
+  border-bottom: 1px solid #589abc;
+  overflow: hidden;
+  padding: 20rpx 40rpx;
+  box-sizing: border-box;
+  margin-bottom: 30rpx;
+  position: relative;
+}
+.phonePage .content .rightTemp .rightItem .name{
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+}
+.phonePage .content .rightTemp .rightItem .phoneicon{
+  position: absolute;
+  bottom: 10rpx;
+  right: 10rpx;
+  width: 80rpx;
+  height: 80rpx;
+  animation: iconAnimation .5s steps(1) infinite;
+  transform-origin: center center;
+  -webkit-transform-origin: center center;
+  -webkit-transition: doubleImgAnimation .5s steps(1) infinite;
+  -o-transition: doubleImgAnimation .5s steps(1) infinite;
+  -moz-transition: doubleImgAnimation .5s steps(1) infinite;
+  transition: doubleImgAnimation .5s steps(1) infinite;
+}
+@keyframes iconAnimation{
+    0%{
+        transform: rotate(-10deg);
+        -webkit-transform: rotate(-10deg);
+    }
+    25%{
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(10deg);
+        -webkit-transform: rotate(10deg);
+    }
+    75%{
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.phonePage .content .rightTemp .noData{
+  text-align: center;
+  width: 100%;
+  line-height: 400rpx;
+  font-size: 14px;
+}

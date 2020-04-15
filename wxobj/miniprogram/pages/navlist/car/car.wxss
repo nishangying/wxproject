@@ -1,0 +1,42 @@
+.shopsPage{
+  width: 100%;
+}
+.shopsPage .content{
+    width: 100%;
+    height: 100vh;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    justify-items: center;
+}
+.shopsPage .content .leftTemp{
+  width: 18%;
+  background: #f3f3f3;
+}
+.shopsPage .content .leftTemp .leftItem{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: left;
+  padding-left: 20rpx;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+.shopsPage .content .leftTemp .active{
+  color: #e0620d;
+  background: #fff;
+  position: relative;
+}
+.shopsPage .content .leftTemp .active .signIcon{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 5rpx;
+  height: 40rpx;
+  background: #e0620d;
+}
+
+.shopsPage .content .rightTemp{
+  width: 80%;
+}

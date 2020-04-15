@@ -3,9 +3,11 @@
     "pages/tabbar/index/index",
     "pages/tabbar/release/release",
     "pages/tabbar/my/my",
-    "pages/navlist/shops/shops",
-    "pages/navlist/car/car"
-   
+    "pages/phone/phone",
+    "pages/hire/hire",
+    "pages/freeride/freeride",
+    "pages/extension/extension",
+    "pages/details/details"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
