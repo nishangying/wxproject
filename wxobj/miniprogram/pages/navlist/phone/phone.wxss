@@ -1,5 +1,15 @@
 .phonePage{
   width: 100%;
+  position: relative;
+}
+.phonePage .addIcon{
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  z-index: 20;
+  transform: translateX(-50%);
+  width: 80rpx;
+  height: 80rpx;
 }
 .phonePage .content{
     width: 100%;
@@ -18,7 +28,7 @@
   height: 100rpx;
   line-height: 100rpx;
   text-align: left;
-  padding-left: 20rpx;
+  padding-left: 10rpx;
   font-size: 14px;
   box-sizing: border-box;
 }
@@ -41,14 +51,16 @@
   width: 80%;
   height: 100vh;
   overflow: scroll;
+  padding-bottom: 100rpx;
+  box-sizing: border-box;
 }
 .phonePage .content .rightTemp .rightItem{
   width: 100%;
   border-bottom: 1px solid #589abc;
   overflow: hidden;
-  padding: 20rpx 40rpx;
+  padding: 20rpx 40rpx 20rpx 20rpx;
   box-sizing: border-box;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
   position: relative;
 }
 .phonePage .content .rightTemp .rightItem .name{

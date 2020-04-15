@@ -20,7 +20,22 @@ Component({
           {name:'张三1',phone:"13928371654",fPhone:'139****1654'},
           {name:'张三1',phone:"13928371654",fPhone:'139****1654'},
         ]
-      },
+      },{
+        phoneArr: [
+          { name: '张三1', phone: "13928371654", fPhone: '139****1654' },
+          { name: '张三1', phone: "13928371654", fPhone: '139****1654' },
+          { name: '张三1', phone: "13928371654", fPhone: '139****1654' },
+        ]
+      },{
+        phoneArr: [
+          { name: '张三1', phone: "13928371654", fPhone: '139****1654' },
+          { name: '张三1', phone: "13928371654", fPhone: '139****1654' },
+          { name: '张三1', phone: "13928371654", fPhone: '139****1654' },
+          { name: '张三1', phone: "13928371654", fPhone: '139****1654' },
+          { name: '张三1', phone: "13928371654", fPhone: '139****1654' },
+          { name: '张三1', phone: "13928371654", fPhone: '139****1654' },
+        ]
+      }
     ],
     rightArr:[],
     isNoData:false,

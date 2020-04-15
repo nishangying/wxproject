@@ -53,8 +53,8 @@ page {
   flex-direction: column;
 }
 .globalContent .nav .nav_item .item{
-  width: 110rpx;
-  height: 110rpx;
+  width: 100rpx;
+  height: 100rpx;
   border-radius: 50%;
   border: 1px solid #e0620d;
   box-sizing: border-box;

@@ -14,10 +14,10 @@
           <image bindtap="onPhone" data-id="{{index}}" class="phoneicon" src="../../../images/icon/phone.png"></image>
         </view>
         <view class="noData" wx:if="{{isNoData}}">暂无数据</view>
-
       </view>
     </view>
     <view class="footer"></view>
+    <image class="addIcon" src='../../../images/phoneicon.png'></image>
 </view>
    
 

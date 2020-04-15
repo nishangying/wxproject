@@ -1,9 +1,4 @@
 {
-  "component": true,
-  "navigationBarBackgroundColor": "#ffffff",
-  "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "租赁",
-  "backgroundColor": "#eeeeee",
-  "backgroundTextStyle": "light",
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarTitleText": "专题"
 }
