@@ -1,0 +1,30 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- <image class="globalBg" src="../../images/globalBg.jpg"></image> -->
+  <view class="globalContent">
+    <!-- 轮播图 -->
+    <view class="swiperTemp" >
+      <swiper  class="swiperBox" duration="{{duration}}" 
+      autoplay="{{autoplay}}" interval="{{interval}}">
+        <block wx:for="{{popupArr}}" wx:key="*this">
+          <swiper-item class="swiperItem" bindtap='details' data-id="{{index}}">
+            <image src="{{item}}" mode="aspectFit"></image>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <!-- 导航 -->
+    <view class="nav">
+      <view class="nav_item" wx:for="{{listArr}}" wx:key='index'>
+        <view bindtap='goto' data-id='{{index}}' class="item">{{item}}</view>
+      </view>
+    </view>
+    <!-- 紧急信息 -->
+    <!-- <view class="urgent">
+
+    </view> -->
+  </view>
+  
+
+
+</view>

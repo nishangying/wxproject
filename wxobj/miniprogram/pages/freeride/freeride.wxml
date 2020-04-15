@@ -1,0 +1,14 @@
+<view class="freeride">
+  <view class="temp" wx:for="{{dataArr}}" wx:key="index">
+    <view class="top">
+      <text>{{item.start}}</text>
+      <image class="arrow" src="../../images/arrow.png"></image>
+      <text>{{item.end}}</text>
+    </view>
+    <text class="date">时间：{{item.date}}{{item.time}}</text>
+    <text class="phone">联系人：{{item.fPhone}}</text>
+    <image bindtap="dial" data-id="{{index}}" class="phoneicon" src="../../images/phoneicon.png"></image>
+  </view>
+</view>
+   
+

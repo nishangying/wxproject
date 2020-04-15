@@ -1,0 +1,89 @@
+.freeride {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 2%;
+  background:#f5f2e3;
+}
+.temp{
+  width: 100%;
+  border-radius: 10rpx;
+  border: 1px solid #589abc;
+  box-shadow: 1px 2px 3px #589abc;
+  overflow: hidden;
+  padding: 20rpx 40rpx;
+  box-sizing: border-box;
+  margin-bottom: 30rpx;
+  position: relative;
+}
+.phoneicon{
+  position: absolute;
+  bottom: 10rpx;
+  right: 20rpx;
+  width: 80rpx;
+  height: 80rpx;
+  animation: iconAnimation .8s steps(1) infinite;
+  transform-origin: center center;
+  -webkit-transform-origin: center center;
+  -webkit-transition: doubleImgAnimation .8s steps(1) infinite;
+  -o-transition: doubleImgAnimation .8s steps(1) infinite;
+  -moz-transition: doubleImgAnimation .8s steps(1) infinite;
+  transition: doubleImgAnimation .8s steps(1) infinite;
+}
+@keyframes iconAnimation{
+    0%{
+        transform: rotate(-20deg);
+        -webkit-transform: rotate(-20deg);
+    }
+    25%{
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(20deg);
+        -webkit-transform: rotate(20deg);
+    }
+    75%{
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+    100%{
+        -webkit-transform: rotate(-20deg);
+        transform: rotate(-20deg);
+    }
+
+}
+.temp .top{
+  width: 100%;
+  height: 40rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ 
+  
+}
+.temp .top{
+  margin:15rpx 0 ;
+}
+.temp .top text{
+  font-size: 14px;
+  font-weight: bold;
+}
+.temp .top  .arrow{
+  width: 247rpx;
+  height: 22rpx;
+}
+.temp .date{
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+}
+.temp .phone{
+  font-size: 12px;
+  font-weight: bold;
+  color: #000;
+}
+

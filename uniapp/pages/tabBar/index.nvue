@@ -120,8 +120,17 @@
 			// 	title: '登录中...'
 			// });
 			// this.wxGetUserInfo();
+			this.init();
 		},
 		methods: {
+			init(){
+				uniCloud.callFunction({
+					name: 'querydata',
+				}).then(res => {
+					  console.log(res);
+				});
+				
+			},
 			wxGetUserInfo() {
 				let _this = this;
 				uni.getUserInfo({

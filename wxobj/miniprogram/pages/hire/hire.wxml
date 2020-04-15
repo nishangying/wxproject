@@ -1,0 +1,8 @@
+<view class="hire">
+    <view class="temp" wx:for="{{dataArr}}" wx:key="index">
+      <text class="title">{{item.title}}</text>
+      <text class="content">{{item.content}}</text>
+    </view>
+</view>
+   
+

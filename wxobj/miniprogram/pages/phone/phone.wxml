@@ -1,0 +1,12 @@
+<view class="phone">
+  <view class="row" wx:for="{{dataArr}}" wx:key='index' wx:for-item="item">
+    <text class="title">{{item.title}}</text>
+    <view class="row-child" bindtap="dial"  data-id="{{child.phone}}"  wx:for="{{item.phoneArr}}"  wx:key='index' wx:for-item="child">
+      <image class="phoneicon" src="../../images/phoneicon.png"></image>
+      <text class="name">{{child.name}}</text>
+      <text class="phone">{{child.fPhone}}</text>
+    </view>
+  </view>
+</view>
+   
+
