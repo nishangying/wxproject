@@ -1,0 +1,28 @@
+[
+  {
+    "name":"推荐",
+    "url":"../../../images/icon/shops.png",
+    "path":"/pages/navlist/shops/shops"
+  }
+  {
+    "name":"拼车",
+    "url":"../../../images/icon/car.png",
+    "path":"/pages/navlist/car/car"
+  }
+  {
+    "name":"租赁",
+    "url":"../../../images/icon/Lease.png",
+    "path":"/pages/navlist/lease/lease"
+  }
+  {
+    "name":"招聘",
+    "url":"../../../images/icon/recruit.png",
+    "path":"/pages/navlist/recruit/recruit"
+  }
+  {
+    "name":"电话",
+    "url":"../../../images/icon/telephone.png",
+    "path":"/pages/navlist/phone/phone"
+  }
+]
+

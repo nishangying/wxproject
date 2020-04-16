@@ -1,4 +1,12 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "专题"
+  "component": true,
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "租赁",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "light",
+  "usingComponents": {
+    "myDraweran":"../../../components/draweran/draweran",
+    "myDrawer":"../../../components/drawer/drawer"
+  }
 }

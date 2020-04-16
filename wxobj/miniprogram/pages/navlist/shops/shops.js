@@ -3,7 +3,8 @@
 Component({
   data: {
     leftArr:["旅游","服饰","食品","住宿"],
-    leftIndex:0
+    leftIndex:0,
+    showModalStatus: false
   },
 
   methods: {
@@ -13,12 +14,11 @@ Component({
       this.setData({
         leftIndex:index,
       })
+    },
+    ready() {
+      global.chatroom = this
+      this.fatalRebuildCount = 0
     }
-    
-  },
-
-  ready() {
-    global.chatroom = this
-    this.fatalRebuildCount = 0
-  },
+  }
+  
 })

@@ -8,34 +8,8 @@ Page({
     logged: false,
     takeSession: false,
     requestResult: '',
-    popupArr:[
-      '../../../images/true.png',
-      '../../../images/true1.png',
-      '../../../images/true2.png',
-    ],
-    listArr: [
-      {
-        name:'推荐',
-        url:'../../../images/icon/shops.png',
-        path:'/pages/navlist/shops/shops'
-      },{
-        name:'拼车',
-        url:'../../../images/icon/car.png',
-        path:'/pages/navlist/car/car'
-      },{
-        name:'租赁',
-        url:'../../../images/icon/Lease.png',
-        path:'/pages/navlist/lease/lease'
-      },{
-        name:'招聘',
-        url:'../../../images/icon/recruit.png',
-        path:'/pages/navlist/recruit/recruit'
-      },{
-        name:'电话',
-        url:'../../../images/icon/telephone.png',
-        path:'/pages/navlist/phone/phone'
-      },
-    ],
+    popupArr:[],
+    listArr: [],
     autoplay: true,
     interval: 2500,
     duration: 700
@@ -65,14 +39,32 @@ Page({
         }
       }
     })
+    this.initData();
+  },
+  initData:function(){
+    const db = wx.cloud.database();
+    db.collection('home').get({
+      success: res => {
+        this.setData({
+          listArr:res.data[0].nav,
+          popupArr:res.data[0].banner,
+        })
+      },
+      fail: err => {
+        wx.showToast({
+          icon: 'none',
+          title: '查询记录失败'
+        })
+      }
+    })
   },
   goto:function(e){
     let id = e.currentTarget.dataset.id;
-    console.log(id)
     let path = this.data.listArr[id].path
+    console.log(path,'path')
     wx.navigateTo({
-          url:path,
-        });
+      url:path,
+    });
     // if(id == 0){
     //   wx.navigateTo({
     //     url:'/pages/extension/extension',

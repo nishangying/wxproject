@@ -1,7 +1,7 @@
 <view class="drawerPage">
-  <view class="drawer_screen" v-show="isShow"></view>
-  <view class="drawer_attr_box" :class="{isShowBefore:!isShow,isShowAfter:isShow}">
-      <view class="drawer_attr_content" :style="{height:getH}">
+  <view class="drawer_screen" wx:if="{{isShow}}"></view>
+  <view class="drawer_attr_box {{isShow?'isShowAfter':'isShowBefore'}}">
+      <view class="drawer_attr_content">
         <slot />
       </view>
   </view>

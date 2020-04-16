@@ -10,7 +10,7 @@
       <view class="rightTemp">
         <view class="rightItem" wx:for="{{rightArr}}" wx:key='index' wx:if="{{!isNoData}}">
           <text class="name">姓名：{{item.name}}</text>
-          <text class="name">联系电话：{{item.phone}}</text>
+          <text class="name">联系电话：{{item.fPhone}}</text>
           <image bindtap="onPhone" data-id="{{index}}" class="phoneicon" src="../../../images/icon/phone.png"></image>
         </view>
         <view class="noData" wx:if="{{isNoData}}">暂无数据</view>
@@ -20,18 +20,12 @@
     <view class="addTemp">
       <image bindtap="onDarwer" class="addIcon" src='../../../images/icon/add.png'></image>
     </view>
-    <myDrawer class="drawerBox" isShow="{{isShow}}" wx:if='{{isShow}}'>
+    <!-- <myDrawer class="drawerBox" animation="{{animationData}}" isShow="{{isShow}}" wx:if='{{isShow}}'>
       <image bindtap="onClose" class="closeImg" src='../../../images/icon/close.png'></image>
-      <view class="title">添加联系方式</view>
-      <view class="iptTemp">
-        <view class="leftTxt">姓名：</view>
-        <input class="ipt" bindinput="inputeNmae" data-obj="obj"  placeholder='请输入出发地点'></input>
+      <view>
+        我是darwer组件
       </view>
-      <view class="iptTemp">
-        <view class="leftTxt">地址：</view>
-        <input class="ipt" bindinput="inputeidt" data-obj="obj"  placeholder='请输入出发地点'></input>
-      </view>
-    </myDrawer>
+    </myDrawer> -->
     <!-- <myDraweran class="drawerBox" hUnm="800" isShow="{{isShow}}" wx:if='{{isShow}}' bind:onClose="_onClose">
       <view>
         我是darwer组件

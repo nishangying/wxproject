@@ -2,18 +2,25 @@
 
 Component({
   data: {
-    leftArr:[],
+    leftArr:["政务","快递",],
     leftIndex:0,
-    rightObj:[],
+    rightObj:[
+      {
+        phoneArr:[
+          {name:'张三1',phone:"13928371654",fPhone:'139****1654'},
+          {name:'张三1',phone:"13928371654",fPhone:'139****1654'},
+          {name:'张三1',phone:"13928371654",fPhone:'139****1654'},
+       
+          {name:'张三1',phone:"13928371654",fPhone:'139****1654'},
+        ]
+      }
+    ],
     rightArr:[],
     isNoData:false,
     isShow:false,
   },
 
   methods: {
-    initData(){
-     
-    },
     switchLeft(e){
       let index = e.currentTarget.dataset.id;
       let length = this.data.rightObj.length;
@@ -61,30 +68,13 @@ Component({
       this.setData({
         isShow : false,
       })
-    },
-    // from
-    inputeidt(e){
-      console.log(e)
     }
   },
   ready() {
-    const db = wx.cloud.database();
-    db.collection('phone').get({
-      success: res => {
-        console.log(res)
-        this.setData({
-          rightArr : res.data[0].rightArr[0].phoneArr,
-          rightObj: res.data[0].rightArr,
-          leftArr : res.data[0].leftArr,
-        })
-      },
-      fail: err => {
-        wx.showToast({
-          icon: 'none',
-          title: '查询记录失败'
-        })
-      }
+    global.chatroom = this
+    this.setData({
+      rightArr : this.data.rightObj[0].phoneArr
     })
-    // this.initData();
+    this.fatalRebuildCount = 0
   },
 })

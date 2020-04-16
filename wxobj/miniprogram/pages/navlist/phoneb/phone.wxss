@@ -138,6 +138,7 @@
 .drawerBox{
   width: 100%;
   position: relative;
+
 }
 .drawerBox .closeImg{
   width: 60rpx;
@@ -146,28 +147,5 @@
   position: absolute;
   top: 10rpx;
   right: 10rpx;
-}
-.drawerBox .title{
-  width: 100%;
-  font-size: 14px;
-  text-align: center;
-}
-.drawerBox .iptTemp{
-  width: 100%;
-  box-sizing: border-box;
-  padding: 10rpx;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-.drawerBox .iptTemp .leftTxt{
-  width: 30%;
-  padding-right: 10rpx;
-  box-sizing: border-box;
-  text-align: right;
-  font-size: 14px;
-}
-.drawerBox .iptTemp .ipt{
-  width: 70%;
-  font-size: 14px;
+  
 }
