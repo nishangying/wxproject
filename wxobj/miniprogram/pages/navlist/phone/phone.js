@@ -67,13 +67,52 @@ Component({
       })
     },
     // onSub
-    inputeidt(e){
-      console.log(e)
+    inputeNmae(e){
+      this.setData({
+        name: e.detail.value
+      })
     },
+    inputaddress(e) {
+      this.setData({
+        address: e.detail.value
+      })
+    },
+    inputPhone(e) {
+      this.setData({
+        phone: e.detail.value
+      })
+    },
+
     onSub(){
       console.log(this.data.name)
       console.log(this.data.address)
       console.log(this.data.phone)
+      const db = wx.cloud.database();
+      db.collection('phonelist').add({
+        data: {
+          "name": this.data.name,
+          "address": this.data.address,
+          "phone": this.data.phone,
+        },
+        success: res => {
+          // 在返回结果中会包含新创建的记录的 _id
+          this.setData({
+            counterId: res._id,
+            count: 1
+          })
+          wx.showToast({
+            title: '新增记录成功',
+          })
+          console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
+        },
+        fail: err => {
+          wx.showToast({
+            icon: 'none',
+            title: '新增记录失败'
+          })
+          console.error('[数据库] [新增记录] 失败：', err)
+        }
+      })
     }
   },
   ready() {
