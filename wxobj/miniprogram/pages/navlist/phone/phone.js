@@ -8,6 +8,10 @@ Component({
     rightArr:[],
     isNoData:false,
     isShow:false,
+    // form
+    name:"",
+    address:"",
+    phone:"",
   },
 
   methods: {
@@ -62,9 +66,14 @@ Component({
         isShow : false,
       })
     },
-    // from
+    // onSub
     inputeidt(e){
       console.log(e)
+    },
+    onSub(){
+      console.log(this.data.name)
+      console.log(this.data.address)
+      console.log(this.data.phone)
     }
   },
   ready() {

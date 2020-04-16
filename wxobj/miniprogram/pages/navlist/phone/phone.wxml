@@ -25,12 +25,17 @@
       <view class="title">添加联系方式</view>
       <view class="iptTemp">
         <view class="leftTxt">姓名：</view>
-        <input class="ipt" bindinput="inputeNmae" data-obj="obj"  placeholder='请输入出发地点'></input>
+        <input class="ipt" bindinput="inputeNmae" data-obj="obj"  placeholder='请输入姓名'></input>
       </view>
       <view class="iptTemp">
         <view class="leftTxt">地址：</view>
-        <input class="ipt" bindinput="inputeidt" data-obj="obj"  placeholder='请输入出发地点'></input>
+        <input class="ipt" bindinput="inputaddress" data-obj="obj"  placeholder='请输入地址'></input>
       </view>
+      <view class="iptTemp">
+        <view class="leftTxt">联系方式</view>
+        <input class="ipt" bindinput="inputPhone" data-obj="obj"  placeholder='请输入地址'></input>
+      </view>
+      <view bindtap="onSub" class="lastBtn">确认发布</view>
     </myDrawer>
     <!-- <myDraweran class="drawerBox" hUnm="800" isShow="{{isShow}}" wx:if='{{isShow}}' bind:onClose="_onClose">
       <view>

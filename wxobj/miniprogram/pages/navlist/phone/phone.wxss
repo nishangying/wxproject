@@ -171,3 +171,15 @@
   width: 70%;
   font-size: 14px;
 }
+.drawerBox .lastBtn{
+  width: 200rpx;
+  height: 50rpx;
+  background:#e0620d;
+  color: #fff;
+  font-size: 12px;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 50rpx;
+  border-radius: 10rpx;
+  margin: 30rpx auto 0;
+}
