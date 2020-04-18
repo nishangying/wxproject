@@ -14,7 +14,9 @@ App({
         traceUser: true,
       })
     }
-
-    this.globalData = {}
+    this.globalData = {
+      guserInfo:{},
+    }
+    console.log(this.globalData)
   }
 })

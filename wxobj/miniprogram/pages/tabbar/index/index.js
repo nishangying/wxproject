@@ -30,10 +30,13 @@ Page({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
+              console.log(res)
               this.setData({
                 avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo
+                userInfo: res.userInfo,
               })
+              app.globalData.guserInfo = this.data.userInfo
+              console.log(app.globalData)
             }
           })
         }
@@ -122,6 +125,7 @@ Page({
       name: 'login',
       data: {},
       success: res => {
+        console.log(res)
         console.log('[云函数] [login] user openid: ', res.result.openid)
         app.globalData.openid = res.result.openid
         wx.navigateTo({

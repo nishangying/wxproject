@@ -171,6 +171,26 @@
   width: 70%;
   font-size: 14px;
 }
+.drawerBox .switchTab{
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.drawerBox .switchTab .item{
+  padding: 2rpx 5rpx;
+  background: #d5d1d1;
+  color: #000;
+  border-radius: 10rpx;
+  font-size: 12px;
+  margin-right: 15rpx;
+}
+.drawerBox .switchTab .active{
+  border:1px solid #e0620d;
+  background: #e0620d;
+  color:#fff;
+}
+
 .drawerBox .lastBtn{
   width: 200rpx;
   height: 50rpx;

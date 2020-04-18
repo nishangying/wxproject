@@ -1,0 +1,27 @@
+{
+  "leftArr":[
+    {
+      "name":"快递",
+      "sign":"KT",
+      "index":"1"
+    },{
+      "name":"跑腿",
+      "sign":"PT",
+      "index":"2"
+    },{
+      "name":"政务",
+      "sign":"ZW",
+      "index":"3"
+    },{
+      "name":"水电煤",
+      "sign":"SDM",
+      "index":"4"
+    },{
+      "name":"家装工人",
+      "sign":"JZGR",
+      "index":"5"
+    }
+    
+  ]
+}
+

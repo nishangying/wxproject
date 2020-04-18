@@ -4,7 +4,7 @@
       <view class="leftTemp">
         <view class="leftItem {{leftIndex == index?'active':''}}" bindtap="switchLeft" data-id="{{index}}" wx:for="{{leftArr}}" wx:key='index'>
           <view class="signIcon"></view>
-          {{item}}
+          {{item.name}}
         </view>
       </view>
       <view class="rightTemp">
@@ -34,6 +34,11 @@
       <view class="iptTemp">
         <view class="leftTxt">联系方式</view>
         <input class="ipt" bindinput="inputPhone" data-obj="obj"  placeholder='请输入地址'></input>
+      </view>
+      <view class="switchTab">
+        <view class="item {{checkTabIndex == index?'active':''}}" bindtap="checkTab" data-id="{{index}}" wx:for="{{leftArr}}" wx:key='index'>
+          {{item.name}}
+        </view>
       </view>
       <view bindtap="onSub" class="lastBtn">确认发布</view>
     </myDrawer>

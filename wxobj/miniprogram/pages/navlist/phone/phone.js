@@ -8,6 +8,8 @@ Component({
     rightArr:[],
     isNoData:false,
     isShow:false,
+    checkObj:{},   //左边选中的对象
+    checkTabIndex:0,
     // form
     name:"",
     address:"",
@@ -20,21 +22,54 @@ Component({
     },
     switchLeft(e){
       let index = e.currentTarget.dataset.id;
-      let length = this.data.rightObj.length;
+      let length = this.data.rightArr.length;
       this.setData({
         leftIndex:index,
       })
-      if(index < length){
-        this.setData({
-          isNoData : false,
-          rightArr:this.data.rightObj[index].phoneArr
-        })
-      }else{
-        this.setData({
-          isNoData : true,
-          rightArr:[],
-        })
-      }
+      let obj = this.data.leftArr[index];
+      this.setData({
+        checkObj: obj
+      })
+      console.log(this.data.checkObj)
+      this.getData();
+    },
+    checkTab(e){
+      let index = e.currentTarget.dataset.id;
+      let obj = this.data.leftArr[index];
+      this.setData({
+        checkTabIndex :index,
+        checkObj: obj,
+      })
+    },
+    getData(){
+      let tabName = this.data.checkObj.sign;
+      const db = wx.cloud.database();
+      db.collection(tabName).get({
+        success: res => {
+          console.log(res)
+          this.setData({
+            rightArr: res.data,
+            
+            
+          })
+          if (this.data.rightArr.length == 0) {
+            this.setData({
+              isNoData: true
+            })
+          } else {
+            this.setData({
+              isNoData: false
+            })
+          }
+        },
+        fail: err => {
+          console.log(err)
+          wx.showToast({
+            icon: 'none',
+            title: '查询记录失败'
+          })
+        }
+      })
     },
     onPhone(e){
       let id = e.currentTarget.dataset.id;
@@ -45,6 +80,9 @@ Component({
     },
     // onDarwer
     onDarwer(){
+      this.setData({
+        checkTabIndex: 0,
+      })
       if(this.data.isShow){
         this.setData({
           isShow : false,
@@ -84,11 +122,9 @@ Component({
     },
 
     onSub(){
-      console.log(this.data.name)
-      console.log(this.data.address)
-      console.log(this.data.phone)
+      let tabName = this.data.checkObj.sign;
       const db = wx.cloud.database();
-      db.collection('phonelist').add({
+      db.collection(tabName).add({
         data: {
           "name": this.data.name,
           "address": this.data.address,
@@ -96,35 +132,38 @@ Component({
         },
         success: res => {
           // 在返回结果中会包含新创建的记录的 _id
+          this.getData();
           this.setData({
             counterId: res._id,
-            count: 1
+            count: 1,
+            leftIndex: this.data.checkTabIndex,
           })
           wx.showToast({
             title: '新增记录成功',
           })
-          console.log('[数据库] [新增记录] 成功，记录 _id: ', res._id)
+          
+          this.onClose();
         },
         fail: err => {
           wx.showToast({
             icon: 'none',
             title: '新增记录失败'
           })
-          console.error('[数据库] [新增记录] 失败：', err)
+          this.onClose();
         }
       })
     }
   },
   ready() {
     const db = wx.cloud.database();
-    db.collection('phone').get({
+    db.collection('leftname').get({
       success: res => {
         console.log(res)
         this.setData({
-          rightArr : res.data[0].rightArr[0].phoneArr,
-          rightObj: res.data[0].rightArr,
-          leftArr : res.data[0].leftArr,
+          leftArr : res.data[4].leftArr,
+          checkObj : res.data[4].leftArr[0],
         })
+        this.getData();
       },
       fail: err => {
         wx.showToast({
@@ -133,6 +172,5 @@ Component({
         })
       }
     })
-    // this.initData();
   },
 })
