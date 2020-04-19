@@ -96,6 +96,7 @@ Page({
         wx.showLoading({
           title: '上传中',
         })
+        console.log(res)
         const filePath = res.tempFilePaths[0]
         // 上传图片
         const cloudPath = 'releaseImg/'+ 'my-image' + filePath.match(/\.[^.]+?$/)[0]
@@ -104,7 +105,6 @@ Page({
           filePath,
           success: res => {
             console.log('[上传文件] 成功：', res)
-            console.log(_this)
             _this.setData({
               uploadSrc: filePath,
               uploadadd: false
@@ -128,6 +128,10 @@ Page({
       }
     })
   },
+  onPullDownRefresh () {
+    console.log("下拉刷新")
+    wx.stopPullDownRefresh()
+  }
   
 
 })

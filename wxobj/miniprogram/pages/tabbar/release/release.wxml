@@ -7,7 +7,7 @@
   <view class="content">
     <view class="noData" wx:if="{{isNoData}}">暂无数据</view>
     <view class="ulTemp" wx:for="{{contentArr}}" wx:key="index" wx:if="{{!isNoData}}">
-      <image class="leftImg" src="{{item.imgUrl}}"></image>
+      <image class="leftImg" src="https://6465-demo-brj41-1301195291.tcb.qcloud.la/my-image.png?sign=d2552f9bb81a252e6dfe2094d1d793ee&t=1587311118"></image>
       <text class="rightTxt">{{item.msg}}</text>
     </view>
   
