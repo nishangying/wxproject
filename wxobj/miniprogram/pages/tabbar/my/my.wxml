@@ -1,6 +1,34 @@
 <!--index.wxml-->
-<view class="container">
-  我的   
-
+<view class="myPage">
+  <view class="info">
+    <view class="infoBorder">
+      <image class="HeadImg" src="{{userInfo.avatarUrl}}"></image>
+    </view>   
+    <text class="name">{{userInfo.nickName}}</text>
+  </view>
+  <view class="content">
+    <view class="textTemp">
+      <view class="leftTemp">
+        <image class="leftIcon" src="../../../images/icon/release.png"></image>
+        <text class="leftTxt">我的发布:</text>
+      </view>
+      <image class="rightIcon" src="../../../images/icon/right.png"></image>
+    </view>
+    <view class="textTemp">
+      <view class="leftTemp">
+        <image class="leftIcon" src="../../../images/icon/release.png"></image>
+        <text class="leftTxt">我的发布:</text>
+      </view>
+      <image class="rightIcon" src="../../../images/icon/right.png"></image>
+    </view>
+    <view class="textTemp">
+      <view class="leftTemp">
+        <image class="leftIcon" src="../../../images/icon/order.png"></image>
+        <text class="leftTxt">我的订单:</text>
+      </view>
+      <image class="rightIcon" src="../../../images/icon/right.png"></image>
+    </view>
+  </view>
+  
 
 </view>

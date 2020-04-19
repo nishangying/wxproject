@@ -1,78 +1,57 @@
 /**index.wxss**/
 
-page {
-  background: #f3f3f3;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-.container{
-  position: relative;
-}
-.globalBg{
-  width: 100%;
-  height: 100vh;
-  display: block;
-  opacity: .7;
-}
-.globalContent{
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-}
-.globalContent .swiperTemp{
-  width: 100%;
-  height: 360rpx;
-  overflow: hidden;
+.myPage {
+  background: #fff;
+  padding: 50rpx;
   box-sizing: border-box;
-  padding: 10px;
 }
-.globalContent .swiperTemp .swiperBox{
-  height: 100%;
+.myPage .info{
   width: 100%;
+  background:#fff;
+  text-align: center;
 }
-.globalContent .swiperTemp .swiperBox .swiperItem{
-  height: 100%;
+.myPage .info .infoBorder{
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  border:1px solid #e0620d;
+  padding: 5rpx;
+  margin:  30rpx auto;
+}
+.myPage .info .infoBorder .HeadImg{
   width: 100%;
-}
-.globalContent .swiperTemp image{
-  width: 100%;
   height: 100%;
-  border-radius: 10rpx;
+  border-radius: 50%;
 }
-.globalContent .nav{
-  width:100%;
+.myPage .content{
+  margin-top: 150rpx;
+  padding: 4% 0;
+  box-sizing: border-box;
+}
+.myPage .content .textTemp{
+  width: 100%;
+  height: 100rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-sizing: border-box;
-  flex-wrap: wrap;
-  padding: 15rpx 35rpx 20rpx;
+  font-size: 14px;
+  border-bottom: 2px soild #e0620d;
 }
-.globalContent .nav .nav_item{
-  width: 25%;
+.myPage .content .textTemp .leftTemp{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
-.globalContent .nav .nav_item .item{
-  width: 120rpx;
-  height: 120rpx;
-  border-radius: 50%;
-  font-size: 15px;
-  background:linear-gradient(to right,#ffe55c,#ffbe19); 
-  text-align: center;
-  line-height: 116rpx;
-  border: 1px solid #629eba;
-  padding: 2rpx;
-  box-sizing: border-box;
-  margin:0 auto;
+.myPage .content .textTemp .leftIcon{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 10rpx;
 }
-.globalContent .urgent{
-  width: 96%;
-  height: 600rpx;
-  border:1px solid #629eba;
-  border-radius: 10rpx;
-  margin: 40rpx auto 0;
-  background:#fff;
-  overflow: scroll;
+.myPage .content .textTemp .leftTxt{
+  
+  text-align: left;
+}
+.myPage .content .textTemp .rightIcon{
+  width: 30rpx;
+  height: 30rpx;
 }

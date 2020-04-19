@@ -1,5 +1,5 @@
 <view class="drawerPage">
-  <view class="drawer_screen" wx:if="{{isShow}}"></view>
+  <view class="drawer_screen" wx:if="{{isShow}}" bindtap="onClose"></view>
   <view class="drawer_attr_box {{isShow?'isShowAfter':'isShowBefore'}}">
       <view class="drawer_attr_content">
         <slot />

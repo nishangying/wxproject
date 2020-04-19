@@ -30,13 +30,11 @@ Page({
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
           wx.getUserInfo({
             success: res => {
-              console.log(res)
               this.setData({
                 avatarUrl: res.userInfo.avatarUrl,
                 userInfo: res.userInfo,
               })
               app.globalData.guserInfo = this.data.userInfo
-              console.log(app.globalData)
             }
           })
         }
@@ -64,7 +62,6 @@ Page({
   goto:function(e){
     let id = e.currentTarget.dataset.id;
     let path = this.data.listArr[id].path
-    console.log(path,'path')
     wx.navigateTo({
       url:path,
     });

@@ -15,7 +15,9 @@ Component({
   },
 
   methods: {
-    
+    onClose(){
+      this.triggerEvent('popupClose');
+    }
 
   },
 

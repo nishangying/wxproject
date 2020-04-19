@@ -1,7 +1,35 @@
 <!--index.wxml-->
-<view class="release">
-  发布
+<view class="releasePage">
+  <view class="addFiexd">
+    <image bindtap="onRelease" class="addIcon" src='../../../images/icon/add.png'></image>
+  </view>
+  <!-- 内容 -->
+  <view class="content">
+    <view class="noData" wx:if="{{isNoData}}">暂无数据</view>
+    <view class="ulTemp" wx:for="{{contentArr}}" wx:key="index" wx:if="{{!isNoData}}">
+      <image class="leftImg" src="{{item.imgUrl}}"></image>
+      <text class="rightTxt">{{item.msg}}</text>
+    </view>
   
-
+  </view>
+   <myDrawer class="drawerBox" isShow="{{isShow}}" wx:if='{{isShow}}' bind:popupClose="popupClose">
+    <view class="release">
+      <view class="iptTemp">
+        <textarea class="ipt" bindinput="inputtextarea"></textarea>  
+      </view>
+      <view class="operation">
+        <!-- <view class="addTemp">
+          
+        </view> -->
+        <view class="uploader-text addTemp" bindtap="doUpload">
+          <image class="addImg" src="../../../images/icon/addImg.png" wx:if='{{uploadadd}}'></image>
+          <image class="sucImg" src="{{uploadSrc}}" wx:if='{{!uploadadd}}'></image>
+        </view>
+        <view class="subBtn" bindtap='subBtn' >
+          发布
+        </view>
+      </view>
+    </view>
+   </myDrawer>
 
 </view>

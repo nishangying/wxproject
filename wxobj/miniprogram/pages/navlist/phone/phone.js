@@ -49,8 +49,6 @@ Component({
           console.log(res)
           this.setData({
             rightArr: res.data,
-            
-            
           })
           if (this.data.rightArr.length == 0) {
             this.setData({
