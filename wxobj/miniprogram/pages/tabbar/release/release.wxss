@@ -51,11 +51,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid #e9e3e3;
-  border-radius: 10rpx;
   padding: 15rpx;
   box-sizing: border-box;
-  box-shadow: 1px 2px 3px #e9e3e3;
+  border: 1px solid #e9e3e3;
+  border-radius: 10rpx;
+  box-shadow: 1px 3px 3px #b8b4b4;
   margin-bottom: 20rpx;
 }
 
@@ -66,20 +66,33 @@
   
 }
 
-.releasePage .content .ulTemp .rightTxt{
+.releasePage .content .ulTemp .rightTemp{
   width: 70%;
+  height: 200rpx;
+}
+.releasePage .content .ulTemp .rightTemp .righttxt{
+  font-size: 12px;
+  text-align: left;
+  display: block;
+  height: 150rpx;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 4;
   overflow: hidden;
-  font-size: 12px;
-}
-
-.releasePage .content .ulTemp{
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center
+}
+.releasePage .content .ulTemp .rightTemp .comment{
+  width: 100%;
+  text-align: right;
+}
+.releasePage .content .ulTemp .rightTemp .comment image{
+  width: 30rpx;
+  height: 30rpx;
+  margin: 0 10rpx 0 20rpx;
+}
+.releasePage .content .ulTemp .rightTemp .comment text{
+  font-size: 12px;
+  
 }
 
 

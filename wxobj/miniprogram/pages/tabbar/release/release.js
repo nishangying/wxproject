@@ -9,6 +9,7 @@ Page({
     uploadadd:true,
     contentArr:[],
     isNoData:false,
+    
   },
 
 
@@ -67,6 +68,8 @@ Page({
       data: {
         "msg": this.data.textareaTxt,
         "imgUrl": this.data.uploadSrc,
+        "eye": 0,
+        "pen":0,
       },
       success: res => {
         this.getData();
@@ -96,22 +99,20 @@ Page({
         wx.showLoading({
           title: '上传中',
         })
-        console.log(res)
         const filePath = res.tempFilePaths[0]
         // 上传图片
-        const cloudPath = 'releaseImg/'+ 'my-image' + filePath.match(/\.[^.]+?$/)[0]
+        const dateName = new Date().getTime();
+        const cloudPath = 'releaseImg/' + dateName + filePath.match(/\.[^.]+?$/)[0]
         wx.cloud.uploadFile({
           cloudPath,
           filePath,
           success: res => {
-            console.log('[上传文件] 成功：', res)
             _this.setData({
-              uploadSrc: filePath,
+              uploadSrc: app.globalData.uploadUrl + cloudPath,
               uploadadd: false
             })
           },
           fail: e => {
-            console.error('[上传文件] 失败：', e)
             wx.showToast({
               icon: 'none',
               title: '上传失败',
@@ -128,10 +129,7 @@ Page({
       }
     })
   },
-  onPullDownRefresh () {
-    console.log("下拉刷新")
-    wx.stopPullDownRefresh()
-  }
+ 
   
 
 })

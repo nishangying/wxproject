@@ -7,9 +7,21 @@
   <view class="content">
     <view class="noData" wx:if="{{isNoData}}">暂无数据</view>
     <view class="ulTemp" wx:for="{{contentArr}}" wx:key="index" wx:if="{{!isNoData}}">
-      <image class="leftImg" src="https://6465-demo-brj41-1301195291.tcb.qcloud.la/my-image.png?sign=d2552f9bb81a252e6dfe2094d1d793ee&t=1587311118"></image>
-      <text class="rightTxt">{{item.msg}}</text>
+      <image class="leftImg" src="{{item.imgUrl}}"></image>
+      <view class="rightTemp">
+        <text class="righttxt">{{item.msg}}</text>
+        <view class="comment">
+          <image wx:if="{{item.eye ==0}}" src="../../../images/icon/eye0.png"></image>
+          <image wx:if="{{item.eye >0}}" src="../../../images/icon/eye1.png"></image>
+          <text>{{item.eye}}</text>
+          <image wx:if="{{item.pen ==0}}" src="../../../images/icon/pen.png"></image>
+          <image wx:if="{{item.pen >0}}" src="../../../images/icon/pen1.png"></image>
+          <text>{{item.pen}}</text>
+        </view>
+      </view>
     </view>
+    
+    
   
   </view>
    <myDrawer class="drawerBox" isShow="{{isShow}}" wx:if='{{isShow}}' bind:popupClose="popupClose">
