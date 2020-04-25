@@ -1,0 +1,43 @@
+<view class="detailPage">
+  <view class="header">
+    <view class="leftImg">
+      <image class="avatarUrl" src="{{dataObj.authorImg}}"></image>
+    </view>
+    <view class="rightImg">
+        <text class="name">{{dataObj.authorName}}</text>
+        <text class="time">{{dataObj.data}}</text>
+    </view>
+  </view>
+
+  <view class="msgTemp">
+    <view class="imgBox">
+      <image class="picture" src="{{dataObj.imgUrl}}"></image>
+      <image class="picture" src="{{dataObj.imgUrl}}"></image>
+      <image class="picture" src="{{dataObj.imgUrl}}"></image>
+    </view>
+    <text class="msg">{{dataObj.msg}}</text>
+  </view>
+  <view class="comment">
+    <view class="ulTemp" wx:for="{{commentArr}}" wx:key="index">
+      <view class="leftitem">
+        <image class="authorImg" src="{{item.authorImg}}"></image>
+      </view>
+      <view class="rightitem">
+        <text class="author">{{item.author}}</text>
+        <text class="txt">{{item.comment}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="footer">
+    <input class="ipt" value='{{comment}}' bindinput="inputIpt" placeholder='欢迎评论'></input>
+    <view class="subBtn" bindtap='subBtn'>发表</view>
+  </view>
+</view>
+
+
+
+
+
+
+   
+

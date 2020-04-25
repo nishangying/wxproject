@@ -18,6 +18,5 @@ App({
       guserInfo:{},
       uploadUrl: 'https://6465-demo-brj41-1301195291.tcb.qcloud.la/',
     }
-    console.log(this.globalData)
   }
 })

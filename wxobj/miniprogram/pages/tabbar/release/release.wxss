@@ -57,6 +57,7 @@
   border-radius: 10rpx;
   box-shadow: 1px 3px 3px #b8b4b4;
   margin-bottom: 20rpx;
+  background: #fff;
 }
 
 .releasePage .content .ulTemp .leftImg{
@@ -69,12 +70,13 @@
 .releasePage .content .ulTemp .rightTemp{
   width: 70%;
   height: 200rpx;
+  position: relative;
 }
 .releasePage .content .ulTemp .rightTemp .righttxt{
   font-size: 12px;
   text-align: left;
   display: block;
-  height: 150rpx;
+  /* height: 150rpx; */
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
@@ -82,6 +84,9 @@
   width: 100%;
 }
 .releasePage .content .ulTemp .rightTemp .comment{
+  position: absolute;
+  right: 0;
+  bottom: 0;
   width: 100%;
   text-align: right;
 }
@@ -109,6 +114,21 @@
 .releasePage .release{
   width: 100%;
   box-sizing: border-box;
+  position: relative;
+}
+.releasePage .release .title{
+  width: 100%;
+  text-align: center;
+  line-height: 50rpx;
+  font-size: 14px;
+}
+.releasePage .release .closeImg{
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  right: 5rpx;
+  top: 5rpx;
+
 }
 .releasePage .release .iptTemp{
   border: 1px solid #a9a5a5;
@@ -125,14 +145,14 @@
 }
 .releasePage .operation{
   width: 100%;
-  margin-top: 15rpx;
+  margin-top: 25rpx;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .releasePage .operation .addTemp{
-  width: 100rpx;
-  height: 100rpx;
+  width: 150rpx;
+  height: 150rpx;
   border: 1px solid #a9a5a5;
   border-radius: 10rpx;
   display: flex;

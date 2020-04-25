@@ -1,4 +1,10 @@
 {
+  "component": true,
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "留言板",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "light",
   "usingComponents": {
     "myDrawer": "../../components/drawer/drawer"
   }

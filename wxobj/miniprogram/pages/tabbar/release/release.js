@@ -1,4 +1,5 @@
 //index.js
+var util = require('../../../utils/utils.js');
 const app = getApp()
 
 Page({
@@ -12,18 +13,13 @@ Page({
     
   },
 
-
-  onLoad: function() {
-    const db = wx.cloud.database();
-    this.getData();
-  },
   getData:function(){
     const db = wx.cloud.database();
     db.collection('release_tab').get({
       success: res => {
         console.log(res)
         this.setData({
-          contentArr: res.data,
+          contentArr: res.data.reverse(),
         })
         if (this.data.rightArr.length == 0) {
           this.setData({
@@ -57,12 +53,12 @@ Page({
     })
   },
   inputtextarea(e) {
-    console.log(e)
     this.setData({
       textareaTxt: e.detail.value
     })
   },
   subBtn:function(){
+    const posttime = util.formatTime(new Date(), 1);
     const db = wx.cloud.database();
     db.collection('release_tab').add({
       data: {
@@ -70,6 +66,9 @@ Page({
         "imgUrl": this.data.uploadSrc,
         "eye": 0,
         "pen":0,
+        "authorName": app.globalData.guserInfo.nickName || "",
+        "authorImg": app.globalData.guserInfo.avatarUrl || "",
+        "data": posttime,
       },
       success: res => {
         this.getData();
@@ -122,14 +121,67 @@ Page({
             wx.hideLoading()
           }
         })
-
       },
       fail: e => {
         console.error(e)
       }
     })
   },
- 
-  
+  // open
+  open(e){
+    // let _this = this;
+    // let id = e.currentTarget.dataset.id;
+    // let obj = this.data.contentArr[id];
+    // const db = wx.cloud.database();
+    // let count = obj.eye+1;
+    // db.collection('release_tab').doc(obj._id).update({
+    //   data:{
+    //     eye: count
+    //   },
+    //   success(res){
+    //     wx.setStorage({
+    //       key: "releaseObj",
+    //       data: obj
+    //     })
+    //     wx.navigateTo({
+    //       url: '/pages/details/release-detail/detail',
+    //     })
+    //   },
+    //   fail: err => {
+    //       console.error('[数据库] [更新记录] 失败：', err)
+    //   }
 
+    // })
+    let _this = this;
+    let id = e.currentTarget.dataset.id;
+    let obj = this.data.contentArr[id];
+    let count = obj.eye + 1;
+    wx.cloud.callFunction({
+      name: 'updata',
+      data: {
+        _id: obj._id,
+        eye: count,
+      },
+      success: res => {
+        console.log('更新数据成功', res)
+        wx.setStorage({
+          key: "releaseObj",
+          data: obj
+        })
+        wx.navigateTo({
+          url: '/pages/details/release-detail/detail',
+        })
+      },
+      fail: err => {
+        wx.showToast({
+          icon: 'none',
+          title: '调用失败',
+        })
+        console.error('[云函数] [sum] 调用失败：', err)
+      }
+    })
+  },
+  onShow: function (options) {
+    this.getData();
+  },
 })

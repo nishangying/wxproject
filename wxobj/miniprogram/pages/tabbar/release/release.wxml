@@ -6,7 +6,7 @@
   <!-- 内容 -->
   <view class="content">
     <view class="noData" wx:if="{{isNoData}}">暂无数据</view>
-    <view class="ulTemp" wx:for="{{contentArr}}" wx:key="index" wx:if="{{!isNoData}}">
+    <view class="ulTemp" bindtap="open" data-id="{{index}}" wx:for="{{contentArr}}" wx:key="index" wx:if="{{!isNoData}}">
       <image class="leftImg" src="{{item.imgUrl}}"></image>
       <view class="rightTemp">
         <text class="righttxt">{{item.msg}}</text>
@@ -24,8 +24,10 @@
     
   
   </view>
-   <myDrawer class="drawerBox" isShow="{{isShow}}" wx:if='{{isShow}}' bind:popupClose="popupClose">
+  <myDrawer class="drawerBox" isShow="{{isShow}}" wx:if='{{isShow}}' bind:popupClose="popupClose">
     <view class="release">
+      <view class="title">留言板</view>
+      <image bindtap="popupClose" class="closeImg" src="../../../images/icon/close0.png"></image>
       <view class="iptTemp">
         <textarea class="ipt" bindinput="inputtextarea"></textarea>  
       </view>
@@ -42,6 +44,6 @@
         </view>
       </view>
     </view>
-   </myDrawer>
+  </myDrawer>
 
 </view>
